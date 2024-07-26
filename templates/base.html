@@ -36,7 +36,15 @@
     <!-- Header Navigation Content -->
     {% include 'includes/header.html' %}
 
-    Hello, Recipe Creators!
+    <!-- Main Content -->
+    <main>
+        {% block content %}
+        <!-- Content from other templates goes here -->
+        {% endblock content %}
+    </main>
+
+    <!-- Footer Content -->
+    {% include 'includes/footer.html' %}
 
 
     <!-- Bootstrap js CDN link -->

@@ -7,14 +7,11 @@
 }
 
 :root {
-    /* * Fonts
-    --title: 'Playfair Display SC', sans-serif;
-    --main-font: 'Lato', sans-serif; */
-
     /* Colors */
     --background: #F7F7F7;
     --dark-green: #071B01; 
-    --dark-moss-green: #3E451A; 
+    /* --dark-moss-green: #3E451A;  */
+    --olive-green: #575C0E;
     --light-cream: #F7F5EF; 
     --yellow: #E6AB3F; 
     --black: #010201; 
@@ -47,6 +44,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Header */
+/* Navigation bar */
 .navbar {
     box-shadow:  1px -1px 8px 0 var(--harvest-gold);
 }
@@ -117,16 +115,15 @@ img.logo {
 }
 
 img.logo:hover {
-    transform: scale(1.1); /* Slightly enlarges the logo */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+    transform: scale(1.1); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 
 img.logo:active {
-    transform: scale(1.05); /* Slightly smaller scale than hover */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Less pronounced shadow */
-    opacity: 0.9; /* Slightly reduces opacity */
+    transform: scale(1.05); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+    opacity: 0.9; 
 }
-
 
 .btn-custom {
     color: var(--dark-green);
@@ -164,4 +161,38 @@ img.logo:active {
 
 .form-control::placeholder {
     color: var(--dark-green);
+}
+
+
+/* Footer */
+footer {
+    flex-shrink: 0;
+    text-align: center;
+    box-shadow: 1px -1px 8px 0 var(--harvest-gold);
+    background-color: var(--olive-green);
+    padding: 10px;
+} 
+
+footer p {
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    color: var(--light-cream);
+    font-weight: 450;
+    margin-bottom: 0;
+}
+    
+footer > a {
+    margin-right: 30px; 
+    font-size: 1.5rem; 
+    color: var(--light-cream); 
+}
+
+.social-links:hover {
+    color: var(--light-cream);
+    font-weight: bold;
+    transform: scale(1.5);
+}
+
+.social-links {
+    transition: all 0.3s linear;
 }
