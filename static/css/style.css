@@ -130,6 +130,7 @@ img.logo:active {
     border-color: var(--yellow);
     font-weight: bold;
     font-size: 18px;
+    cursor: pointer;
 }
 
 .btn-custom:hover {
@@ -195,4 +196,74 @@ footer > a {
 
 .social-links {
     transition: all 0.3s linear;
+}
+
+/* Index Page */
+/* Hero image */
+.hero-bg {
+    height: 100vh;
+    width: 100%;
+    background-image: url("https://res.cloudinary.com/dssflljmx/image/upload/t_background-img/v1722097011/1000_F_882600666_fp2GaVSJdganljgFk1LFOqxqxOfmi9m0_ah3l25.jpg"); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; 
+}
+
+.info-box {
+    background-color: var(--olive-green);
+    border-radius: 10px;
+}
+
+.custom-display {
+    font-size: 2.5rem; 
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.custom-lead {
+    line-height: 1.5;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.25rem; 
+}
+
+.custom-btn {
+    border: none;
+    border-radius: 5px;
+    background-color: var(--yellow); 
+    border-color: var(--yellow);
+    color: #fff;
+    cursor: pointer;
+    padding: 10px 20px; 
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.custom-btn:hover {
+    color: #fff;
+    background-color: #d59c2c;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(230, 171, 63, 0.5);
+}
+
+.custom-btn:focus {
+    color: #fff;
+    outline: 1px solid rgba(0, 0, 0, 0.3);
+    outline-offset: 1px; 
+    background-color: #d59c2c;
+    box-shadow: 0 0 0 2px rgba(230, 171, 63, 0.5);
+}
+
+.custom-btn:active {
+    color: #fff;
+    background-color: #c5931a;
+    box-shadow: 0 2px 4px rgba(230, 171, 63, 0.5);
+    transform: translateY(2px);
+}
+
+.shadow-custom {
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.5); 
 }
