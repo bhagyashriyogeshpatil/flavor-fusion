@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Login" %}{% endblock head_title %}
+
+{% block content %}
+
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5">
+          <div class="card shadow-lg">
+              <div class="card-header text-center card-header-custom py-3">
+                  <h1 class="card-title">{% trans "Login" %}</h1>
+              </div>
+              <div class="card-body p-5">
+                  <p class="mb-4">{% blocktrans %}To interact with posts by commenting, creating, or liking, please log in. 
+                  If you haven't registered yet, <a class="sign-up-link" href="{{ signup_url }}"><strong>Signup</strong></a> now.{% endblocktrans %}</p>
+                  <form class="login" method="POST" action="{% url 'account_login' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
+                    {% endif %}
+                    <div class="d-flex justify-content-center">
+                      <button class="btn btn-signup mt-3" type="submit">{% trans "Login" %}</button>
+                  </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+{% endblock content %}
