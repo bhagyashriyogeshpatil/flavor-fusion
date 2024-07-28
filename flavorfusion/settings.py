@@ -104,6 +104,13 @@ DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
+# List of trusted origins for Cross-Site Request Forgery (CSRF) protection.
+# Add domains that are allowed to make requests to your site to prevent CSRF attacks.
+CSRF_TRUSTED_ORIGINS = [
+    "https://*.codeinstitute-ide.net",
+    "https://*.herokuapp.com"
+]
+
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 

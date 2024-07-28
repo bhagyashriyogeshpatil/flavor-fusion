@@ -3,7 +3,7 @@
 {% load i18n %}
 {% load account socialaccount %}
 
-{% block head_title %}{% trans "Login" %}{% endblock head_title %}
+{% block head_title %}{% trans "Log In" %}{% endblock head_title %}
 
 {% block content %}
 
@@ -12,7 +12,7 @@
       <div class="col-md-6 col-lg-5">
           <div class="card shadow-lg">
               <div class="card-header text-center card-header-custom py-3">
-                  <h1 class="card-title">{% trans "Login" %}</h1>
+                  <h1 class="card-title">{% trans "Log In" %}</h1>
               </div>
               <div class="card-body p-5">
                   <p class="mb-4">{% blocktrans %}To interact with posts by commenting, creating, or liking, please log in. 
@@ -24,7 +24,7 @@
                     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
                     {% endif %}
                     <div class="d-flex justify-content-center">
-                      <button class="btn btn-signup mt-3" type="submit">{% trans "Login" %}</button>
+                      <button class="btn btn-signup mt-3" type="submit">{% trans "Log In" %}</button>
                   </div>
                   </form>
               </div>
