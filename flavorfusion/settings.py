@@ -106,6 +106,7 @@ DATABASES = {
 
 # List of trusted origins for Cross-Site Request Forgery (CSRF) protection.
 # Add domains that are allowed to make requests to your site to prevent CSRF attacks.
+# Need to add both local development server URL domain and production server URL domain to allow you to add blog post content from the admin dashboard
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net",
     "https://*.herokuapp.com"

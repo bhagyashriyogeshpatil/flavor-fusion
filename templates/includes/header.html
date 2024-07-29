@@ -47,5 +47,12 @@
                 </form>
             </div>
         </div>
+        <div class="flex-shrink-0 main-bg">
+            {% if user.is_authenticated %}
+            <p class="text-end m-2">You are logged in as {{ user.username }}</p>
+            {% else %}
+            <p class="text-end m-2">You are not logged in</p>
+            {% endif %}
+        </div>
     </nav>
 </header>
