@@ -2,6 +2,7 @@ from django.views.generic import (TemplateView, CreateView)
 from .models import Recipe
 from .forms import NewFlavorsForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 
 # Create your views here.
 
