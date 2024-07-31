@@ -24,6 +24,8 @@ class Recipe(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.TextField()
     featured_image = CloudinaryField('image', default='placeholder')
+    ingredients = models.TextField(blank=False, default="List ingredients here")
+    instructions = models.TextField(blank=False, default="Describe the cooking instructions here")
     status = models.IntegerField(choices=STATUS_CHOICES, default=0)
     created_on = models.DateTimeField(auto_now_add=True)
     prep_time = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(300)], default=15)
@@ -36,31 +38,7 @@ class Recipe(models.Model):
 
     def __str__(self):
         return f"{self.title} | written by {self.author}"
-    
-    # Returns all ingredients associated with the recipe
-    def ingredients_list(self):
-        return self.ingredients.all()
 
-    #  Returns all instructions associated with the recipe
-    def instructions_list(self):
-        return self.instructions.all()
-
-
-class Ingredient(models.Model):
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='ingredients')
-    name = models.CharField(max_length=250)
-    quantity = models.CharField(max_length=100)
-
-    def __str__(self):
-        return f"{self.quantity} {self.name}"
-
-class Instruction(models.Model):
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='instructions')
-    step_number = models.IntegerField()
-    description = models.TextField()
-
-    def __str__(self):
-        return f"{self.step_number}. {self.description}"
 
 
 
