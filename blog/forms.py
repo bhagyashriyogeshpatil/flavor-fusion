@@ -4,7 +4,7 @@ from django_summernote.widgets import SummernoteWidget
 
 class NewFlavorsForm(forms.ModelForm):
     """
-    Recipe Form to create/add new recipes
+    NewFlavors Form to create/add new recipes
     """
     class Meta:
         model = Recipe
@@ -28,7 +28,7 @@ class NewFlavorsForm(forms.ModelForm):
             'instructions': 'Recipe Instructions',
             'cuisines_type': 'Cuisine Type',
             'status': 'Status (Save as a Draft / Publish Now)',
-            'prep_time': 'Preparation Time (time in minutes)',
-            'cooking_time': 'Cooking Time (time in minutes)',
+            'prep_time': 'Preparation Time (Time in minutes)',
+            'cooking_time': 'Cooking Time (Time in minutes)',
             'servings': 'Servings',
         }
