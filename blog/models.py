@@ -19,10 +19,10 @@ class CuisineType(models.Model):
 
 # Define the Recipe model
 class Recipe(models.Model):
-    title = models.CharField(max_length=250)
+    title = models.CharField(unique=True, max_length=250)
     slug = models.SlugField(unique=True, max_length=250)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
-    description = models.TextField()
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='recipe_owner')
+    description = models.CharField(max_length=500, null=False, blank=False)
     featured_image = CloudinaryField('image', default='placeholder')
     ingredients = models.TextField(blank=False, default="List ingredients here")
     instructions = models.TextField(blank=False, default="Describe the cooking instructions here")
