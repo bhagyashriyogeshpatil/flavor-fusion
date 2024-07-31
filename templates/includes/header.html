@@ -27,7 +27,7 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">New Flavors</a>
+                        <a class="nav-link {% if request.path == new_flavors %}active" aria-current="page{% endif %}" href="{% url 'new_flavors' %}">New Flavors</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == logout_url %}active" aria-current="page{% endif %}" href="{% url 'account_logout' %}">Log Out</a>
