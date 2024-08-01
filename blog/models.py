@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.template.defaultfilters import slugify
 
 # Define STATUS_CHOICES
 STATUS_CHOICES = (
@@ -39,6 +40,14 @@ class Recipe(models.Model):
     def __str__(self):
         return f"{self.title} | written by {self.author}"
 
-
+    def save(self, *args, **kwargs):
+        """
+        Override the save method to automatically generate a slug from the title.
+        The slug is generated using the slugify function, which converts the title
+        into a URL-friendly format. The method then calls the parent's save method
+        to save the object to the database.
+        """
+        self.slug = slugify(self.title)
+        super(Recipe, self).save(*args, **kwargs)
 
 
