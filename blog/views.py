@@ -1,3 +1,4 @@
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import (TemplateView, CreateView, ListView)
 from .models import Recipe
 from .forms import NewFlavorsForm
@@ -30,3 +31,16 @@ class NewFlavors(LoginRequiredMixin, CreateView):
         msg = "Your recipe has been posted successfully."
         messages.add_message(self.request, messages.SUCCESS, msg)
         return super(NewFlavors, self).form_valid(form)
+
+
+def recipe_detail(request, slug):
+    """
+    Function-based view to render recipe in detail.
+    """
+    queryset = Recipe.objects.filter(status=1)
+    recipe = get_object_or_404(queryset, slug=slug)
+
+    return render(
+        request, 
+        "blog/recipe_detail.html", 
+        {"recipe": recipe})

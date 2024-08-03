@@ -372,14 +372,39 @@ footer > a {
 .page-link {
     text-decoration: none;
     color: #fff;
-    background-color: var(--goldenrod);
+    background-color: var(--yellow);
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-.page-link:hover,
+.page-link:hover {
+    text-decoration: none;
+    color: #fff;
+    background-color: var(--goldenrod);
+    box-shadow: 0 4px 8px rgba(230, 171, 63, 0.5);
+}
+
 .page-link:focus {
     color:  var(--dark-green);
     box-shadow: 0 4px 8px rgba(230, 171, 63, 0.5);
 }
+
+/* Recipe details */
+.image {
+    width: 100%;
+    height: auto;
+}
+
+.recipe-detail {
+    overflow-wrap: break-word;
+}
+
+.ingredients, .instructions {
+    font-family: 'Lato', sans-serif;;
+}
+
+#edit-button, #delete-button {
+    width: 25%;
+}
+

@@ -11,18 +11,18 @@
         <div class="col-lg-4 col-md-6 col-12 mb-5 mx-auto">
             <div class="card h-100 shadow-custom rounded border">
                 {% if "placeholder" in recipe.featured_image.url %}
-                <img class="card-image-top recipe-image rounded-top" src="https://res.cloudinary.com/dssflljmx/image/upload/v1722682783/default_img_cba9yl.webp" alt="multiple food dishes arranged on a table" aria-label="Multiple food dishes arranged on a table">
+                <img class="card-img-top recipe-image rounded-top" src="https://res.cloudinary.com/dssflljmx/image/upload/v1722682783/default_img_cba9yl.webp" alt="multiple food dishes arranged on a table" aria-label="Multiple food dishes arranged on a table">
                 {% else %}
-                <img class="card-image-top recipe-image rounded-top" src="{{ recipe.featured_image.url }}" alt="{{ recipe.title }}" aria-label="Beautifully plated recipe">
+                <img class="card-img-top recipe-image rounded-top" src="{{ recipe.featured_image.url }}" alt="{{ recipe.title }}" aria-label="{{ recipe.title }}">
                 {% endif %}
                 <div class="card-body">
                     <p class="card-text text-muted custom-card-text">Posted by {{recipe.author}}</p>
                     <h1 class="card-title custom-card-title">{{ recipe.title }}</h1>
                     <p class="card-text card-content custom-card-text">{{ recipe.description | truncatechars:100 }}</p>
-                    <p class="card-text card-content custom-card-text"><i class="fa-solid fa-globe"></i> Cuisine: {{ recipe.cuisine_type.name  }}</p>
+                    <p class="card-text card-content custom-card-text"><i class="fa-solid fa-globe"></i> Cuisine: {{ recipe.cuisine_type.name }}</p>
                     <hr>
                     <p class="card-text text-muted custom-card-date">{{ recipe.created_on}}</p>
-                    <a href="#" class="btn custom-btn">View Recipe</a> 
+                    <a href="{% url 'recipe_detail' recipe.slug %}" class="btn custom-btn">View Recipe</a> 
                 </div> 
             </div>
         </div>
