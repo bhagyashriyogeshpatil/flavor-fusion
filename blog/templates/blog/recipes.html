@@ -5,27 +5,43 @@
 
 {% block content %}
 <!-- This template displays a list of recipes in a card layout with images, titles, descriptions, and author information. -->
-<div class="container d-flex flex-wrap justify-content-center">
+<div class="container justify-content-center">
     <div class="row my-5"> 
-        {% for recipe in recipes %}
+        {% for recipe in recipes_list %}
         <div class="col-lg-4 col-md-6 col-12 mb-5 mx-auto">
             <div class="card h-100 shadow-custom rounded border">
                 {% if "placeholder" in recipe.featured_image.url %}
                 <img class="card-image-top recipe-image rounded-top" src="https://res.cloudinary.com/dssflljmx/image/upload/v1722682783/default_img_cba9yl.webp" alt="multiple food dishes arranged on a table" aria-label="Multiple food dishes arranged on a table">
                 {% else %}
-                <img class="card-image-top recipe-image rounded-top" src="{{ recipe.featured_image.url }}" alt="beautifully plated recipe" aria-label="Beautifully plated recipe">
+                <img class="card-image-top recipe-image rounded-top" src="{{ recipe.featured_image.url }}" alt="{{ recipe.title }}" aria-label="Beautifully plated recipe">
                 {% endif %}
                 <div class="card-body">
-                    <p class="card-text text-muted">Posted by {{recipe.author}} | {{ recipe.created_on}}</p>
-                    <h1 class="card-title">{{ recipe.title }}</h1>
-                    <p class="card-text card-content">{{ recipe.description | truncatechars:100 }}</p>
+                    <p class="card-text text-muted custom-card-text">Posted by {{recipe.author}}</p>
+                    <h1 class="card-title custom-card-title">{{ recipe.title }}</h1>
+                    <p class="card-text card-content custom-card-text">{{ recipe.description | truncatechars:100 }}</p>
+                    <p class="card-text card-content custom-card-text"><i class="fa-solid fa-globe"></i> Cuisine: {{ recipe.cuisine_type.name  }}</p>
                     <hr>
+                    <p class="card-text text-muted custom-card-date">{{ recipe.created_on}}</p>
                     <a href="#" class="btn custom-btn">View Recipe</a> 
                 </div> 
             </div>
         </div>
         {% endfor %}               
     </div>
+
+    <!-- Pagination controls for navigating pages, with "Previous" and "Next" links -->
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
 
 </div>
 

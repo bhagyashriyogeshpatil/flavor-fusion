@@ -355,3 +355,31 @@ footer > a {
     height: 250px;
     object-fit: cover;
 }
+
+.custom-card-title {
+    font-size: 1.75rem; 
+}
+
+.custom-card-text {
+    font-size: 1rem; 
+}
+
+.custom-card-date {
+    font-size: 0.75rem; 
+}
+
+/* Pagination*/
+.page-link {
+    text-decoration: none;
+    color: #fff;
+    background-color: var(--goldenrod);
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.page-link:hover,
+.page-link:focus {
+    color:  var(--dark-green);
+    box-shadow: 0 4px 8px rgba(230, 171, 63, 0.5);
+}

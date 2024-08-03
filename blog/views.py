@@ -14,7 +14,8 @@ class RecipesList(ListView):
     """View all recipes"""
     template_name = "blog/recipes.html"
     model = Recipe
-    context_object_name = "recipes"
+    context_object_name = "recipes_list"
+    paginate_by = 6
 
 
 class NewFlavors(LoginRequiredMixin, CreateView):
