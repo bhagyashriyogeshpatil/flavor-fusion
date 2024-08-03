@@ -23,7 +23,7 @@
                         <a class="nav-link {% if request.path == index_url %}active" aria-current="page{% endif %}" href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Browse Recipes</a>
+                        <a class="nav-link {% if request.path == recipes_url  %}active" aria-current="page{% endif %}" href="{% url 'recipes' %}">Browse Recipes</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">

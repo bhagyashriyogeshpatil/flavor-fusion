@@ -1,16 +1,20 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
 
-{% block title %}New Flavor{% endblock %} 
+{% block title %}New Flavor{% endblock %}
 
 {% block content %}
+<!-- This template displays a form for submitting a new flavor. 
+ It includes a title, form fields rendered with Crispy Forms, and a submit button. 
+ The form is styled inside a Bootstrap card with shadow and rounded corners. 
+ The `enctype="multipart/form-data"` attribute is used for file uploads, and CSRF protection is included. -->
 <div class="container mt-5 mb-5">
     <div class="card shadow-lg rounded-xl px-5">
         <!-- enctype to upload media images to cloudinary -->
         <form method="POST" enctype="multipart/form-data" class="form">
             <h1 class="text-center mt-3 mb-2">New Flavor</h1>
             {% csrf_token %}
-            {{ form.media }} 
+            {{ form.media }}
             {{ form|crispy }}
             <div class="text-center">
                 <button type="submit" class="btn custom-btn my-4">Submit New Flavor</button>

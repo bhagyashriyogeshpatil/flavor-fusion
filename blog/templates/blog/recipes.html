@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Recipes {% endblock %}
+
+{% block content %}
+<!-- This template displays a list of recipes in a card layout with images, titles, descriptions, and author information. -->
+<div class="container d-flex flex-wrap justify-content-center">
+    <div class="row my-5"> 
+        {% for recipe in recipes %}
+        <div class="col-lg-4 col-md-6 col-12 mb-5 mx-auto">
+            <div class="card h-100 shadow-custom rounded border">
+                {% if "placeholder" in recipe.featured_image.url %}
+                <img class="card-image-top recipe-image rounded-top" src="https://res.cloudinary.com/dssflljmx/image/upload/v1722682783/default_img_cba9yl.webp" alt="multiple food dishes arranged on a table" aria-label="Multiple food dishes arranged on a table">
+                {% else %}
+                <img class="card-image-top recipe-image rounded-top" src="{{ recipe.featured_image.url }}" alt="beautifully plated recipe" aria-label="Beautifully plated recipe">
+                {% endif %}
+                <div class="card-body">
+                    <p class="card-text text-muted">Posted by {{recipe.author}} | {{ recipe.created_on}}</p>
+                    <h1 class="card-title">{{ recipe.title }}</h1>
+                    <p class="card-text card-content">{{ recipe.description | truncatechars:100 }}</p>
+                    <hr>
+                    <a href="#" class="btn custom-btn">View Recipe</a> 
+                </div> 
+            </div>
+        </div>
+        {% endfor %}               
+    </div>
+
+</div>
+
+{% endblock content %}

@@ -1,4 +1,4 @@
-from django.views.generic import (TemplateView, CreateView)
+from django.views.generic import (TemplateView, CreateView, ListView)
 from .models import Recipe
 from .forms import NewFlavorsForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -8,6 +8,14 @@ from django.contrib import messages
 
 class Index(TemplateView):
     template_name = "blog/index.html"
+
+
+class RecipesList(ListView):
+    """View all recipes"""
+    template_name = "blog/recipes.html"
+    model = Recipe
+    context_object_name = "recipes"
+
 
 class NewFlavors(LoginRequiredMixin, CreateView):
     """Add New Flavors view"""
