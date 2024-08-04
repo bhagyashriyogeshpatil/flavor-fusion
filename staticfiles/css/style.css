@@ -408,3 +408,7 @@ footer > a {
     width: 25%;
 }
 
+/* displaying Django messages */
+.msg-container {
+    background-color: #81d77b42;
+}
