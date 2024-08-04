@@ -1,9 +1,12 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import (TemplateView, CreateView, ListView)
+from django.views.generic import (TemplateView, CreateView, ListView, DeleteView)
 from .models import Recipe
 from .forms import NewFlavorsForm
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
+
+# To test the 403 Forbidden error page
+# from django.core.exceptions import PermissionDenied
 
 # Create your views here.
 
@@ -44,3 +47,20 @@ def recipe_detail(request, slug):
         request, 
         "blog/recipe_detail.html", 
         {"recipe": recipe})
+
+class DeleteRecipe(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    """Delete a recipe"""
+    model = Recipe
+    success_url = '/recipes/'
+
+    def test_func(self):
+        return self.request.user == self.get_object().author
+
+    def delete(self, request, *args, **kwargs):
+        msg = "Your recipe has been deleted successfully."
+        messages.add_message(self.request, messages.SUCCESS, msg)
+        return super().delete(request, *args, **kwargs)
+
+# To test the 403 Forbidden error page
+# def my_view(request):
+#     raise PermissionDenied

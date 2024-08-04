@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %} Delete Recipe - {{ recipe.title }} {% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<!-- Delete recipe confirmation form -->
+<div class="container text-center mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 mx-auto">
+            <h1>Confirm Deletion</h1>
+            <p class="mt-4">Do you really wish to delete the recipe - <strong>{{ recipe.title }}</strong>?</p>
+            <p class="mb-3">This action is irreversible.</p>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="submit" value="Confirm" class="btn btn-danger w-25 mb-4">
+            </form>
+            <a href="{% url 'recipe_detail' recipe.slug %}" class="btn btn-success w-25">Cancel</a>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
