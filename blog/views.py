@@ -4,6 +4,7 @@ from .models import Recipe
 from .forms import NewFlavorsForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
+from django.urls import reverse_lazy
 
 # To test the 403 Forbidden error page
 # from django.core.exceptions import PermissionDenied
@@ -51,15 +52,29 @@ def recipe_detail(request, slug):
 class DeleteRecipe(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """Delete a recipe"""
     model = Recipe
-    success_url = '/recipes/'
+    success_url = reverse_lazy('recipes')
 
     def test_func(self):
         return self.request.user == self.get_object().author
 
-    def delete(self, request, *args, **kwargs):
+    def form_valid(self, request, *args, **kwargs):
         msg = "Your recipe has been deleted successfully."
         messages.add_message(self.request, messages.SUCCESS, msg)
         return super().delete(request, *args, **kwargs)
+
+    # def delete(self, request, *args, **kwargs):
+    #     # Add a debug statement before the delete
+    #     print("Attempting to delete recipe...") 
+    #     response = super().delete(request, *args, **kwargs)
+    #     # Add a debug statement after the delete
+    #     print("Recipe deleted.")
+    #     # Add the success message
+    #     msg = "Your recipe has been deleted successfully."
+    #     messages.success(self.request, msg)
+    #     # Debugging statements
+    #     for message in messages.get_messages(request):
+    #         print(f"Message: {message}")
+    #     return response
 
 # To test the 403 Forbidden error page
 # def my_view(request):
