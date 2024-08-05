@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import (TemplateView, CreateView, ListView, DeleteView)
+from django.views.generic import (TemplateView, CreateView, ListView, DeleteView, UpdateView)
 from .models import Recipe
 from .forms import NewFlavorsForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -62,19 +62,21 @@ class DeleteRecipe(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         messages.add_message(self.request, messages.SUCCESS, msg)
         return super().delete(request, *args, **kwargs)
 
-    # def delete(self, request, *args, **kwargs):
-    #     # Add a debug statement before the delete
-    #     print("Attempting to delete recipe...") 
-    #     response = super().delete(request, *args, **kwargs)
-    #     # Add a debug statement after the delete
-    #     print("Recipe deleted.")
-    #     # Add the success message
-    #     msg = "Your recipe has been deleted successfully."
-    #     messages.success(self.request, msg)
-    #     # Debugging statements
-    #     for message in messages.get_messages(request):
-    #         print(f"Message: {message}")
-    #     return response
+class EditRecipe(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """ Edit/update a recipe """
+    model = Recipe
+    form_class = NewFlavorsForm
+    template_name = "blog/edit_recipe.html"
+    success_url = reverse_lazy('recipes')
+
+    def test_func(self):
+        return self.request.user == self.get_object().author
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        msg = "Your recipe has been updated successfully."
+        messages.add_message(self.request, messages.SUCCESS, msg)
+        return super().form_valid(form)
 
 # To test the 403 Forbidden error page
 # def my_view(request):

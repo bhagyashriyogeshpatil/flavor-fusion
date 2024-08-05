@@ -37,7 +37,7 @@
             <p>{{ recipe.description }}</p>
             {% if user.id == recipe.author.id %}
             <div class="text-center mt-4">
-                <a href="#" id="edit-button" class="btn btn-success me-2">Edit</a>
+                <a href="{% url 'edit_recipe' recipe.slug %}" id="edit-button" class="btn btn-success me-2">Edit</a>
                 <a href="{% url 'delete_recipe' recipe.slug %}" id="delete-button" class="btn btn-danger">Delete</a>
             </div>
             {% endif %}     
