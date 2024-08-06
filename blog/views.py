@@ -5,6 +5,7 @@ from .forms import NewFlavorsForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from django.urls import reverse_lazy
+from django.db.models import Q
 
 # To test the 403 Forbidden error page
 # from django.core.exceptions import PermissionDenied
@@ -21,6 +22,23 @@ class RecipesList(ListView):
     model = Recipe
     context_object_name = "recipes_list"
     paginate_by = 6
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        query = self.request.GET.get("q")
+        
+        if query:
+            queryset = queryset.filter(
+                Q(title__icontains=query) |
+                Q(description__icontains=query) |
+                Q(cuisine_type__name__icontains=query) |
+                Q(author__username__icontains=query),
+                status=1
+            ).order_by('-created_on')
+        else:
+            queryset = Recipe.objects.all()
+        
+        return queryset
 
 
 class NewFlavors(LoginRequiredMixin, CreateView):

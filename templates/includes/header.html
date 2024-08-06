@@ -1,7 +1,9 @@
 {% load static %}
 
-<!-- urls to apply active class to active links -->
+<!-- Define URLs for use in the template -->
 {% url 'home' as home_url %}
+{% url 'recipes' as recipes_url%}
+{% url 'new_flavors' as new_flavors_url%}
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
@@ -20,14 +22,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == index_url %}active" aria-current="page{% endif %}" href="{% url 'home' %}">Home</a>
+                        <a class="nav-link {% if request.path == home_url %}active" aria-current="page{% endif %}" href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == recipes_url  %}active" aria-current="page{% endif %}" href="{% url 'recipes' %}">Browse Recipes</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == new_flavors %}active" aria-current="page{% endif %}" href="{% url 'new_flavors' %}">New Flavors</a>
+                        <a class="nav-link {% if request.path == new_flavors_url %}active" aria-current="page{% endif %}" href="{% url 'new_flavors' %}">New Flavors</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == logout_url %}active" aria-current="page{% endif %}" href="{% url 'account_logout' %}">Log Out</a>
@@ -41,8 +43,9 @@
                     </li>
                     {% endif %} 
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Explore Flavors" aria-label="Search">
+                <!-- Search Form -->
+                <form class="d-flex" role="search" method="get" action="{% url 'recipes' %}">
+                    <input class="form-control me-2" type="search" name="q" placeholder="Explore Flavors" aria-label="Search">
                     <button class="btn btn-custom" type="submit">Explore</button>
                 </form>
             </div>
