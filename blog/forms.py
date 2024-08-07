@@ -17,7 +17,9 @@ class NewFlavorsForm(forms.ModelForm):
             'description': forms.Textarea(attrs={'rows': 5, 'placeholder': 'Provide a Description of your recipe here'}),
             'prep_time': forms.NumberInput(attrs={'placeholder': 'Specify the Preparation time in minutes'}),
             'cooking_time': forms.NumberInput(attrs={'placeholder': 'Specify the Cooking time in minutes'}),
-            'servings': forms.NumberInput(attrs={'placeholder': 'Quantity of servings'})
+            'servings': forms.NumberInput(attrs={'placeholder': 'Quantity of servings'}),
+            'cuisine_type': forms.Select(attrs={'class': 'form-control'}),
+            'status': forms.Select(attrs={'class': 'form-control'}),
         }
 
         labels = {

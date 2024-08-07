@@ -179,3 +179,17 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configuration for the Summernote editor
+SUMMERNOTE_CONFIG = {
+    'summernote': {
+        'width': '100%',  # Width of the editor
+        'height': '400px',  # Height of the editor
+        'fontNames': [
+            'Lato', 'Sans Serif', 'Arial', 'Arial Black', 'Courier New', 'Helvetica',
+            'Tahoma', 'Times New Roman', 'Verdana'
+        ],
+        'fontNamesIgnoreCheck': ['Lato', 'Sans Serif'], # Ensure these fonts are listed
+        'disableResizeEditor': True, # Prevent resizing of the editor
+    },
+}
