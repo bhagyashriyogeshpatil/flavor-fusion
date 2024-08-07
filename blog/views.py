@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import (TemplateView, CreateView, ListView, DeleteView, UpdateView)
 from .models import Recipe
 from .forms import NewFlavorsForm
@@ -95,6 +95,23 @@ class EditRecipe(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         msg = "Your recipe has been updated successfully."
         messages.add_message(self.request, messages.SUCCESS, msg)
         return super().form_valid(form)
+
+def like_recipe(request, slug):
+    """
+    View to like or unlike a recipe.
+    """
+    recipe = get_object_or_404(Recipe, slug=slug)
+    user = request.user
+
+    if user.is_authenticated:
+        if request.method == "POST":
+            action = request.POST.get('action')
+            if action == 'like':
+                recipe.likes.add(user)
+            elif action == 'unlike':
+                recipe.likes.remove(user)
+    
+    return redirect('recipe_detail', slug=slug)
 
 # To test the 403 Forbidden error page
 # def my_view(request):

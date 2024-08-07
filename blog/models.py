@@ -33,6 +33,7 @@ class Recipe(models.Model):
     cooking_time = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(600)], default=15)
     servings = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(50)])
     cuisine_type = models.ForeignKey(CuisineType, on_delete=models.CASCADE)
+    likes = models.ManyToManyField(User, related_name='liked_recipes', blank=True)
 
     class Meta:
         ordering = ["-created_on"]
@@ -50,4 +51,5 @@ class Recipe(models.Model):
         self.slug = slugify(self.title)
         super(Recipe, self).save(*args, **kwargs)
 
-
+    def get_likes_count(self):
+        return self.likes.count()

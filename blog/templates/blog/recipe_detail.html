@@ -35,6 +35,34 @@
                 </div>
             </div>
             <p>{{ recipe.description }}</p>
+            <!-- Like/Unlike Section -->
+            <div class="row">
+                <div class="col-12">
+                    {% if user.is_authenticated %}
+                    <!-- If the user is authenticated, display the form to like/unlike the recipe -->
+                        <form method="post" action="{% url 'recipe_like' recipe.slug %}" class="d-inline">
+                            {% csrf_token %}
+                            {% if user in recipe.likes.all %}
+                                <button type="submit" name="action" value="unlike" class="bg-transparent border-0 p-0" aria-label="unlike the recipe">
+                                    <strong><i class="fa-solid fa-heart fa-lg"></i></strong>
+                                </button>
+                            {% else %}
+                                <button type="submit" name="action" value="like" class="bg-transparent border-0 p-0" aria-label="like the recipe">
+                                    <strong><i class="fa-regular fa-heart fa-lg"></i></strong>
+                                </button>
+                            {% endif %}
+                        </form>
+                    {% else %}
+                    <!-- If the user is not authenticated, show a disabled like button -->
+                        <button class="bg-transparent" disabled>
+                            <strong><i class="fa-regular fa-heart fa-lg"></i></strong>
+                        </button>
+                    {% endif %}
+                    <!-- Display the likes count -->
+                    <p class="d-inline ml-2">{{ recipe.get_likes_count }} likes</p>
+                </div>
+            </div>
+            <!-- Edit/Delete Links -->
             {% if user.id == recipe.author.id %}
             <div class="text-center mt-4">
                 <a href="{% url 'edit_recipe' recipe.slug %}" id="edit-button" class="btn btn-success me-2">Edit</a>
