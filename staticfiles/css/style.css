@@ -407,3 +407,11 @@ footer > a {
 #edit-button, #delete-button {
     width: 25%;
 }
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 767.98px) {
+    .custom-btn {
+        width: 80%; 
+        font-size: 1rem;
+    }
+}
