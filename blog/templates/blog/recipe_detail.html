@@ -20,23 +20,8 @@
             <h1>{{ recipe.title }}</h1>
             <p class="custom-card-text text-muted">Posted by {{ recipe.author}} on {{ recipe.created_on }}</p>
             <p><i class="fa-solid fa-globe"></i><strong> Cuisine: </strong> {{ recipe.cuisine_type.name }}</p>
-            <div class="row">
-                <div class="col-12 col-md-4">
-                    <p><i class="fa-solid fa-clock"></i><strong> Prep Time:</strong></p>
-                    <p>{{ recipe.prep_time }} mins</p>
-                </div>
-                <div class="col-12 col-md-4">
-                    <p><i class="fa-regular fa-clock"></i><strong> Cooking Time:</strong></p>
-                    <p>{{ recipe.cooking_time }} mins</p>
-                </div>
-                <div class="col-12 col-md-4">
-                    <p><i class="fa-solid fa-bowl-rice"></i><strong> Servings:</strong></p>
-                    <p>{{ recipe.servings }}</p>
-                </div>
-            </div>
-            <p>{{ recipe.description }}</p>
             <!-- Like/Unlike Section -->
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-12">
                     {% if user.is_authenticated %}
                     <!-- If the user is authenticated, display the form to like/unlike the recipe -->
@@ -62,6 +47,21 @@
                     <p class="d-inline ml-2">{{ recipe.get_likes_count }} likes</p>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <p><i class="fa-solid fa-clock"></i><strong> Prep Time:</strong></p>
+                    <p>{{ recipe.prep_time }} mins</p>
+                </div>
+                <div class="col-12 col-md-4">
+                    <p><i class="fa-regular fa-clock"></i><strong> Cooking Time:</strong></p>
+                    <p>{{ recipe.cooking_time }} mins</p>
+                </div>
+                <div class="col-12 col-md-4">
+                    <p><i class="fa-solid fa-bowl-rice"></i><strong> Servings:</strong></p>
+                    <p>{{ recipe.servings }}</p>
+                </div>
+            </div>
+            <p>{{ recipe.description }}</p>
             <!-- Edit/Delete Links -->
             {% if user.id == recipe.author.id %}
             <div class="text-center mt-4">
