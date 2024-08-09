@@ -91,4 +91,38 @@
     </div>
     <hr>
 </div>
+<!-- Comments Section -->
+<div class="container mt-4">
+    <h3>Comments</h3>
+    <!-- Comment List -->
+    <div class="mb-4">
+        {% if comments %}
+            <ul class="list-group">
+                {% for comment in comments %}
+                    <li class="list-group-item">
+                        <strong>{{ comment.author.username }}</strong>
+                        <p>{{ comment.text }}</p>
+                        <p class="custom-card-text text-muted">{{ comment.created_on }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+        <p>No comments yet. Be the first to comment!</p>
+        {% endif %}
+    </div>
+    <!-- Comment Form -->
+    {% if user.is_authenticated %}
+    <div class="mb-4">
+        <h4>Leave a Comment:</h4>
+        <form method="post">
+            {% csrf_token %}
+            {{ comment_form|crispy }}
+            <button type="submit" class="btn btn-primary">Submit Comment</button>
+        </form>
+    </div>
+    {% else %}
+    <p>You must <a class="sign-up-link" href="{% url 'account_login' %}">log in</a> to leave a comment.</p>
+    {% endif %}
+</div>
+
 {% endblock content %}

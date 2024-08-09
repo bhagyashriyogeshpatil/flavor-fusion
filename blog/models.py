@@ -53,3 +53,20 @@ class Recipe(models.Model):
 
     def get_likes_count(self):
         return self.likes.count()
+
+class Comment(models.Model):
+    recipe = models.ForeignKey(Recipe, related_name='comments', on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    approved = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ["-created_on"]
+
+    def __str__(self):
+        return f"Comment by {self.author} on {self.recipe}"
+
+    def approve(self):
+        self.approved = True
+        self.save()

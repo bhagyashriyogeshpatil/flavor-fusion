@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import (TemplateView, CreateView, ListView, DeleteView, UpdateView)
-from .models import Recipe
+from .models import Recipe, Comment
 from .forms import NewFlavorsForm
+from .forms import CommentForm
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from django.urls import reverse_lazy
@@ -68,11 +69,28 @@ def recipe_detail(request, slug):
     """
     queryset = Recipe.objects.filter(status=1)
     recipe = get_object_or_404(queryset, slug=slug)
+    comments = recipe.comments.filter(approved=True)
+
+    if request.method == 'POST':
+        if request.user.is_authenticated:
+            comment_form = CommentForm(request.POST)
+            if comment_form.is_valid():
+                comment = comment_form.save(commit=False)
+                comment.recipe = recipe
+                comment.author = request.user
+                comment.save()
+                messages.success(request, "Your comment has been submitted and is awaiting approval.")
+                return redirect('recipe_detail', slug=recipe.slug)
+        else:
+            messages.error(request, "You need to be logged in to comment.")
+            return redirect('login')
+    else:
+        comment_form = CommentForm()
 
     return render(
         request, 
         "blog/recipe_detail.html", 
-        {"recipe": recipe})
+        {"recipe": recipe, "comments": comments, "comment_form": comment_form})
 
 class DeleteRecipe(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """Delete a recipe"""

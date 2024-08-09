@@ -1,5 +1,5 @@
 from django import forms
-from .models import Recipe
+from .models import Recipe, Comment
 from django_summernote.widgets import SummernoteWidget
 
 class NewFlavorsForm(forms.ModelForm):
@@ -34,3 +34,8 @@ class NewFlavorsForm(forms.ModelForm):
             'cooking_time': 'Cooking Time (Time in minutes)',
             'servings': 'Servings',
         }
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('text',)
