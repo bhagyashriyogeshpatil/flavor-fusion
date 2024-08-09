@@ -6,6 +6,13 @@
 {% block content %}
 <!-- This template displays a list of recipes in a card layout with images, titles, descriptions, and author information. -->
 <div class="container justify-content-center">
+    {% if no_results %}
+    <!-- Display a message when no recipes are found -->
+    <div class="alert alert-warning text-center" role="alert">
+        <strong>No recipes found</strong> for your search "{{ search_query }}". Please try a different search term.
+    </div>
+    {% else %}
+    <!-- Display the list of recipes when results are found -->
     <div class="row my-5"> 
         {% for recipe in recipes_list %}
         <div class="col-lg-4 col-md-6 col-12 mb-5 mx-auto">
@@ -42,7 +49,7 @@
         </ul>
     </nav>
     {% endif %}
-
+    {% endif %}
 </div>
 
 {% endblock content %}

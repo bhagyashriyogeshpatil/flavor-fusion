@@ -40,6 +40,13 @@ class RecipesList(ListView):
         
         return queryset
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        query = self.request.GET.get("q")
+        if query and not context['recipes_list']:
+            context['no_results'] = True
+            context['search_query'] = query
+        return context
 
 class NewFlavors(LoginRequiredMixin, CreateView):
     """Add New Flavors view"""
