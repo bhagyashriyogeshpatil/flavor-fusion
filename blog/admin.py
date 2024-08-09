@@ -18,7 +18,14 @@ class CommentAdmin(admin.ModelAdmin):
     list_display = ('recipe', 'author', 'text', 'created_on', 'approved')
     list_filter = ('approved', 'created_on')
     search_fields = ('author', 'text')
-    actions = ['approve_comments']
+    actions = ['approve_comments', 'disapprove_comments']
 
     def approve_comments(self, request, queryset):
+        """Approve selected comments."""
         queryset.update(approved=True)
+        self.message_user(request, "Selected comments have been approved.")
+
+    def disapprove_comments(self, request, queryset):
+        """Disapprove selected comments."""
+        queryset.update(approved=False)
+        self.message_user(request, "Selected comments have been disapproved.")

@@ -103,6 +103,9 @@
                         <strong>{{ comment.author.username }}</strong>
                         <p>{{ comment.text }}</p>
                         <p class="custom-card-text text-muted">{{ comment.created_on }}</p>
+                        {% if not comment.approved %}
+                            <p class="border border-warning p-2 rounded text-warning">Your comment is awaiting approval.</p>
+                        {% endif %}
                     </li>
                 {% endfor %}
             </ul>
