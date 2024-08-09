@@ -138,6 +138,38 @@ def like_recipe(request, slug):
     
     return redirect('recipe_detail', slug=slug)
 
+def comment_edit(request, slug, comment_id):
+    """
+    View to Handle the comment editing.
+    """
+    recipe = get_object_or_404(Recipe, slug=slug)
+    comment = get_object_or_404(Comment, pk=comment_id)
+
+    if comment.author != request.user:
+        messages.error(request, "You can only edit your own comments.")
+        return redirect('recipe_detail', slug=slug)
+
+    if request.method == "POST":
+        comment_form = CommentForm(request.POST, instance=comment)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.approved = False  # Re-approve the comment after edit
+            comment.save()
+            messages.success(request, "Comment updated and awaiting approval.")
+            return redirect('recipe_detail', slug=slug)
+        else:
+            messages.error(request, "There was an error updating your comment.")
+            return redirect('recipe_detail', slug=slug)
+    else:
+        comment_form = CommentForm(instance=comment)
+
+    return render(request, 'blog/recipe_detail.html', {
+        'recipe': recipe,
+        'comment': comment,
+        'comment_form': comment_form,
+    })
+
+
 # To test the 403 Forbidden error page
 # def my_view(request):
 #     raise PermissionDenied

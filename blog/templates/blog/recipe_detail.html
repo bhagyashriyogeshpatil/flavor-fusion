@@ -106,6 +106,16 @@
                         {% if not comment.approved %}
                             <p class="border border-warning p-2 rounded text-warning">Your comment is awaiting approval.</p>
                         {% endif %}
+                        {% if comment.author == user %}
+                            <!-- Edit Form -->
+                            <form method="post" action="{% url 'comment_edit' slug=recipe.slug comment_id=comment.id %}">
+                                {% csrf_token %}
+                                <textarea name="text" class="form-control mb-2">{{ comment.text }}</textarea>
+                                <button type="submit" class="btn btn-sm btn-success">Edit</button>
+                            </form>
+
+                            <a href="#">Delete</a>
+                        {% endif %}
                     </li>
                 {% endfor %}
             </ul>
