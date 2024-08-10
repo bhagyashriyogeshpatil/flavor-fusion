@@ -181,6 +181,23 @@ def comment_update_view(request, slug, comment_id):
     
     return redirect('recipe_detail', slug=slug)
 
+
+def comment_delete_view(request, slug, comment_id):
+    """
+    View to handle the comment deletion.
+    """
+    comment = get_object_or_404(Comment, pk=comment_id)
+
+    if comment.author != request.user:
+        messages.error(request, "You can only delete your own comments.")
+        return redirect('recipe_detail', slug=slug)
+
+    if request.method == "POST":
+        comment.delete()
+        messages.success(request, "Comment deleted successfully.")
+    
+    return redirect('recipe_detail', slug=slug)
+
 # To test the 403 Forbidden error page
 # def my_view(request):
 #     raise PermissionDenied
