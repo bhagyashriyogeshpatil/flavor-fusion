@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Index, NewFlavors, RecipesList, recipe_detail, DeleteRecipe, EditRecipe, like_recipe, comment_edit_view, comment_update_view, comment_delete_view, trigger_500_error
+from .views import Index, NewFlavors, RecipesList, recipe_detail, DeleteRecipe, EditRecipe, like_recipe, comment_edit_view, comment_update_view, comment_delete_view
 
 urlpatterns = [
     path('', Index.as_view(), name='home'),
@@ -15,5 +15,5 @@ urlpatterns = [
     # To test the 403 Forbidden error page
     # path('forbidden/', my_view, name='forbidden'),
     # To test the 500 Internal Server Error page
-    path('test-500/', trigger_500_error, name='test_500'),
+    # path('test-500/', trigger_500_error, name='test_500'),
 ]

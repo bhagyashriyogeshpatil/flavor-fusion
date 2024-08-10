@@ -12,7 +12,7 @@ from django.db.models import Q
 # from django.core.exceptions import PermissionDenied
 
 # To test the 500 Internal Server Error page
-from django.http import HttpResponseServerError
+# from django.http import HttpResponseServerError
 
 # Create your views here.
 
@@ -206,5 +206,5 @@ def comment_delete_view(request, slug, comment_id):
 #     raise PermissionDenied
 
 # To test the 500 Internal Server Error page
-def trigger_500_error(request):
-    raise Exception("This is a simulated 500 error.")
+# def trigger_500_error(request):
+#     raise Exception("This is a simulated 500 error.")
