@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponseForbidden
 from django.views.generic import (TemplateView, CreateView, ListView, DeleteView, UpdateView)
 from .models import Recipe, Comment
 from .forms import NewFlavorsForm
@@ -70,10 +71,21 @@ def recipe_detail(request, slug):
     """
     Function-based view to render recipe in detail.
     """
-    queryset = Recipe.objects.filter(status=1)
-    recipe = get_object_or_404(queryset, slug=slug)
+    # queryset = Recipe.objects.filter(status=1)
+    # recipe = get_object_or_404(queryset, slug=slug)
+    recipe = get_object_or_404(Recipe, slug=slug)
     comments = recipe.comments.all() 
 
+    # Check if the recipe is a draft (status = 0)
+    if recipe.status == 0:
+        # Allow access only to the author or an admin
+        if request.user != recipe.author and not request.user.is_staff:
+            context = {
+                'draft_recipe': True  # Pass this context variable to the 403 template
+            }
+            return render(request, '403.html', context)  # Render the custom 403 page
+
+    # Handle the POST request for comments
     if request.method == 'POST':
         if request.user.is_authenticated:
             comment_form = CommentForm(request.POST)
