@@ -44,7 +44,9 @@
                         </button>
                     {% endif %}
                     <!-- Display the likes count -->
-                    <p class="d-inline ml-2">{{ recipe.get_likes_count }} likes</p>
+                    <p class="d-inline mx-2">{{ recipe.get_likes_count }} likes</p>
+                    <!-- Display the comments count -->
+                    <p class="d-inline ms-4"><strong class="me-2"><i class="fa-regular fa-comments fa-lg"></i></strong>{{ comments.count }} comments</p>
                 </div>
             </div>
             <div class="row">
