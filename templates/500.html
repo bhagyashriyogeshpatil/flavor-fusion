@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %} Internal Server Error {% endblock %}
+
+{% block content %}
+    <div class="container text-center mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 mx-auto">
+                <h1>500 Internal Server Error</h1>
+                <p class="my-4">Sorry, something went wrong on our end.</p>
+
+                <p>We’re experiencing some issues at the moment. Here are a few things you might do:</p>
+                <ul class="list-unstyled text-left mx-auto mt-3">
+                    <li>Try refreshing the page.</li>
+                    <li>Return to the <strong>home page</strong> to start fresh.</li>
+                </ul>
+
+                <a href="{% url 'home' %}" class="btn custom-btn pl-3 pr-md-4">Return to Home Page</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

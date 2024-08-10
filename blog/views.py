@@ -11,6 +11,9 @@ from django.db.models import Q
 # To test the 403 Forbidden error page
 # from django.core.exceptions import PermissionDenied
 
+# To test the 500 Internal Server Error page
+from django.http import HttpResponseServerError
+
 # Create your views here.
 
 class Index(TemplateView):
@@ -201,3 +204,7 @@ def comment_delete_view(request, slug, comment_id):
 # To test the 403 Forbidden error page
 # def my_view(request):
 #     raise PermissionDenied
+
+# To test the 500 Internal Server Error page
+def trigger_500_error(request):
+    raise Exception("This is a simulated 500 error.")
