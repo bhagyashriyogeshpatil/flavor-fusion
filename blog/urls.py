@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Index, NewFlavors, RecipesList, recipe_detail, DeleteRecipe, EditRecipe, like_recipe, comment_edit
+from .views import Index, NewFlavors, RecipesList, recipe_detail, DeleteRecipe, EditRecipe, like_recipe, comment_edit_view, comment_update_view
 
 urlpatterns = [
     path('', Index.as_view(), name='home'),
@@ -9,7 +9,8 @@ urlpatterns = [
     path('delete_recipe/<slug:slug>/', DeleteRecipe.as_view(), name='delete_recipe'),
     path('edit_recipe/<slug:slug>/', EditRecipe.as_view(), name='edit_recipe'),
     path('like/<slug:slug>/', like_recipe, name='recipe_like'),
-    path('<slug:slug>/comment/<int:comment_id>/edit/', comment_edit, name='comment_edit'),
+    path('recipe/<slug:slug>/comment/<int:comment_id>/edit/', comment_edit_view, name='comment_edit'),
+    path('recipe/<slug:slug>/comment/<int:comment_id>/update/', comment_update_view, name='comment_update'),
     # To test the 403 Forbidden error page
     # path('forbidden/', my_view, name='forbidden'),
 ]

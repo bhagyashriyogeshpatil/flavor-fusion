@@ -138,15 +138,35 @@ def like_recipe(request, slug):
     
     return redirect('recipe_detail', slug=slug)
 
-def comment_edit(request, slug, comment_id):
+
+def comment_edit_view(request, slug, comment_id):
     """
-    View to Handle the comment editing.
+    View to display the recipe detail page with the comment editing form.
     """
     recipe = get_object_or_404(Recipe, slug=slug)
     comment = get_object_or_404(Comment, pk=comment_id)
 
     if comment.author != request.user:
         messages.error(request, "You can only edit your own comments.")
+        return redirect('recipe_detail', slug=slug)
+
+    comment_form = CommentForm(instance=comment)
+    
+    return render(request, 'blog/recipe_detail.html', {
+        'recipe': recipe,
+        'editing_comment': comment,
+        'comment_form': comment_form,
+        'comments': recipe.comments.all(),
+    })
+
+def comment_update_view(request, slug, comment_id):
+    """
+    View to handle the comment update.
+    """
+    comment = get_object_or_404(Comment, pk=comment_id)
+
+    if comment.author != request.user:
+        messages.error(request, "You can only update your own comments.")
         return redirect('recipe_detail', slug=slug)
 
     if request.method == "POST":
@@ -156,19 +176,10 @@ def comment_edit(request, slug, comment_id):
             comment.approved = False  # Re-approve the comment after edit
             comment.save()
             messages.success(request, "Comment updated and awaiting approval.")
-            return redirect('recipe_detail', slug=slug)
         else:
             messages.error(request, "There was an error updating your comment.")
-            return redirect('recipe_detail', slug=slug)
-    else:
-        comment_form = CommentForm(instance=comment)
-
-    return render(request, 'blog/recipe_detail.html', {
-        'recipe': recipe,
-        'comment': comment,
-        'comment_form': comment_form,
-    })
-
+    
+    return redirect('recipe_detail', slug=slug)
 
 # To test the 403 Forbidden error page
 # def my_view(request):

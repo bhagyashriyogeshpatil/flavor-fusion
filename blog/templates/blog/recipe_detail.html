@@ -91,6 +91,7 @@
     </div>
     <hr>
 </div>
+
 <!-- Comments Section -->
 <div class="container mt-4">
     <h3>Comments</h3>
@@ -107,14 +108,19 @@
                             <p class="border border-warning p-2 rounded text-warning">Your comment is awaiting approval.</p>
                         {% endif %}
                         {% if comment.author == user %}
-                            <!-- Edit Form -->
-                            <form method="post" action="{% url 'comment_edit' slug=recipe.slug comment_id=comment.id %}">
-                                {% csrf_token %}
-                                <textarea name="text" class="form-control mb-2">{{ comment.text }}</textarea>
-                                <button type="submit" class="btn btn-sm btn-success">Edit</button>
-                            </form>
-
-                            <a href="#">Delete</a>
+                            {% if comment == editing_comment %}
+                                <!-- Edit Form -->
+                                <form method="post" action="{% url 'comment_update' slug=recipe.slug comment_id=comment.id %}">
+                                    {% csrf_token %}
+                                    <textarea name="text" class="form-control mb-2">{{ comment_form.text.value }}</textarea>
+                                    <button type="submit" class="btn btn-sm btn-success">Update</button>
+                                    <a href="{% url 'recipe_detail' slug=recipe.slug %}" class="btn btn-sm btn-secondary">Cancel</a>
+                                </form>
+                            {% else %}
+                                <!-- Edit and Delete Links -->
+                                <a href="{% url 'comment_edit' slug=recipe.slug comment_id=comment.id %}" class="btn btn-sm btn-primary">Edit</a>
+                                <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                            {% endif %}
                         {% endif %}
                     </li>
                 {% endfor %}
@@ -124,7 +130,7 @@
         {% endif %}
     </div>
     <!-- Comment Form -->
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated and not editing_comment %}
     <div class="mb-4">
         <h4>Leave a Comment:</h4>
         <form method="post">
