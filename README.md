@@ -20,6 +20,14 @@ Deployed website: [Link to website](https://flavor-fusion-blog-ffbf5a5ef8f9.hero
     - [Developer Goals](#developer-goals)
     - [User Goals](#user-goals)
 - [Learning Outcomes and Skill Development](#learning-outcomes-and-skill-development)
+- [System Architecture](#system-architecture)
+    - [Application Structure](#application-structure)
+    - [Backend Logic](#backend-logic)
+    - [Programming Paradigms](#programming-paradigms)
+- [Agile Development Process](#agile-development-process)
+    - [Agile Planning](#agile-planning)
+      - [User Stories and Management](#user-stories-and-management)
+      - [Milestones Overview](#milestones-overview)
 ---
 
 ## Introduction
@@ -77,3 +85,142 @@ This project is meant to meet the course requirements and help build a strong fo
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*
 
+## System Architecture
+
+### Application Structure
+Flavor Fusion is designed using the Model-View-Controller (MVC) pattern, which divides the application into three key components: Model, View, and Controller. This structure helps organize the code, making development and collaboration more manageable.
+
+The frontend is created using HTML, CSS, and JavaScript, with a focus on a mobile-first, responsive design. Bootstrap is utilized for its extensive library of pre-styled components and a responsive grid system, which speeds up development and ensures a smooth user experience on all devices.
+
+The backend is powered by Python and Django. Django handles the backend logic, URL routing, and database interactions, providing a solid and efficient foundation for the application.
+
+For data storage, the project uses a relational database, PostgreSQL, known for its robustness and scalability. The database stores user and recipe information in a structured manner, which optimizes data retrieval and supports complex queries efficiently.
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
+
+### Backend Logic
+Flavor Fusion uses models such as `Recipe`, `Comment`, and `CuisineType`. Each `Recipe` is linked to a `CuisineType` and can have multiple Comments. Each `Comment` is tied to a specific `Recipe` and `User`.
+
+Django views handle all the main functions like creating, updating, reading, and deleting recipes and comments. User login and roles are managed using Django's built-in authentication, which keeps the system secure.
+
+The backend also supports features like liking recipes and approving comments. Tools like Cloudinary manage recipe images, and Summernote widgets are used for rich text editing of ingredients and instructions.
+
+This setup ensures a secure, easy-to-use platform for sharing and managing recipes.
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
+### Programming Paradigms
+
+The application uses various programming paradigms to achieve its functionality:
+
+**Object-Oriented Programming (OOP):** Models like Recipe and Comment use classes to represent and manage data. Django's views and forms also leverage OOP principles for reusability and organization.
+
+**Functional Programming:** Some views are written as functions to handle specific tasks, processing inputs and returning responses.
+
+**Declarative Programming:** The Django ORM and forms use a declarative style to define data structures and form fields, abstracting away complex query and presentation logic.
+
+**Event-Driven Programming:** The app responds to user actions and requests, such as form submissions and comment postings, using a request-response model.
+
+**MVC Pattern:** Django follows the Model-View-Controller (MVC) pattern, with Models handling data, Views managing user interactions, and Controllers (or view functions) processing requests and responses.
+
+
+## Agile Development Process
+
+### Agile Planning
+
+For this project, I implemented an Agile methodology, organizing the entire process using a GitHub project board. This approach allowed me to manage the development from the initial planning stages to the final deployment. The project was divided into 10 milestones, each representing a key phase of the development process, ensuring that progress was systematic and aligned with the project’s goals.
+
+You can view the full Project Board, complete with all user stories and progress tracking, here: <a href="https://github.com/users/bhagyashriyogeshpatil/projects/2" target="_blank">Github Project board</a>
+
+<details><summary>User Story Template</summary>
+
+![user story template](documentation/docs_images/user-story-template.png)
+</details>
+
+<details><summary>Kanban Board</summary>
+
+![kanban board](documentation/docs_images/kanban-board.png)
+</details>
+
+#### User Stories and Management:
+
+- **Acceptance Criteria:** Each user story was developed with specific acceptance criteria to ensure clarity and focus. This approach guaranteed that every task met the necessary requirements before being marked as complete.
+
+- **MoSCoW Prioritization:** To manage priorities effectively, features were categorized using the MoSCoW method - 'Must have', 'Should have'and 'Could have'. This prioritization ensured that the core features (MVP) were developed first, with secondary features added if time permitted.
+
+#### Milestones Overview: 
+
+1. **GitHub Repository Setup**
+
+- This milestone involves creating the GitHub repository and setting up the README file. It’s about getting the project organized and ready for development.
+    - User Story 1: Create GitHub Repository (Must Have)
+    - User Story 26: Create README File (Must Have)
+
+2. **Django Project Initialization**
+
+- This step involves creating the initial Django project and configuring the basic settings. It establishes the groundwork for further development.
+    - User Story 2: Initialize Django Project (Must Have)
+
+3. **Deployment and Configuration**
+
+- This milestone is about preparing the project for live deployment, including configuring settings, setting up the database, and deploying the project to Heroku.
+    - User Story 3: Configure Deployment and Database (Must Have)
+    - User Story 27: Final Deployment to Heroku (Must Have)
+    - User Story 31: Deployment with Static Files (Must Have)
+
+4. **User Authentication and Account Management**
+
+- This milestone adds user authentication features, allowing secure user registration and login. It also includes styling the authentication pages for a better user experience.
+    - User Story 10: Implement Django Allauth for User Registration and Authentication (Must Have)
+    - User Story 11: User Registration and Authentication (Must Have)
+    - User Story 24: Style Allauth Pages (Could Have)
+
+5. **Basic Project Structure**
+
+- Involves designing the core layout and user interface elements, such as the base template, static files, navigation menu, and footer.
+    - User Story 4: Create Base Template (Must Have)
+    - User Story 5: Add Static Files and Media (Must Have)
+    - User Story 6: Create Navigation Menu (Must Have)  
+    - User Story 7: Create Footer (Must Have)
+    - User Story 23: Easy Navigation (Must Have)
+
+6. **Website Content and Navigation**
+
+- Focuses on building the main website pages and navigation features, including the home page, recipe browsing, detailed recipe views and explore recipes.
+    - User Story 8: Home Page (Must Have)
+    - User Story 9: Browse Recipes (Should Have)
+    - User Story 16: View Detailed Recipes (Must Have)
+    - User Story 21: View Paginated Recipe List (Should Have)
+    - User Story 22: Explore Recipes (Should Have)
+
+7. **Recipe Management**
+
+- Implements the functionality for managing recipes, including creating, editing, deleting, and handling draft recipes. This helps maintain the quality and organization of content.
+    - User Story 12: Create and Publish Recipes (Must Have)
+    - User Story 13: Edit Shared Recipes (Must Have)
+    - User Story 14: Delete Recipes (Must Have)
+    - User Story 15: Manage Recipe Posts (Must Have)
+    - User Story 33: Restrict Draft Recipe Access (Must Have)
+
+8. **Recipe Interaction**
+
+- Adds interactive features for recipes, including commenting, viewing comments, liking recipes, and adding a comment count on recipe details.
+    - User Story 17: Comment on Recipes (Should Have)
+    - User Story 18: View Comments on Recipe Posts (Should Have)
+    - User Story 19: Modify or Delete Comments (Could Have)
+    - User Story 20: Approve or Disapprove Comments (Should Have)
+    - User Story 25: Interact with Recipe Likes (Could Have)
+    - User Story 32: Add Comment Count with Icon on Recipe Detail (Could Have)
+
+9. **Final Touches**
+
+- This milestone focuses on refining the user experience, ensuring easy and intuitive navigation throughout the website. It completes the overall structure and usability of the project.
+    - User Story 23: Easy Navigation (Must Have)
+
+10. **Error Handling**
+
+- Ensures the site handles errors effectively with custom error pages and notifications for issues like 403, 404 and 500 errors.
+    - User Story 28: Access 403 Error Handling (Should Have)
+    - User Story 29: Custom 404 Page for Broken Links (Should Have)
+    - User Story 30: Notification of Internal Errors (Should Have)
