@@ -441,9 +441,9 @@ This page makes it simple for users to keep their recipes up to date.
 
 - As a logged-in User, I can edit my shared recipes so that I can correct and update recipe details as needed. **(User Story#13) (must have)**
 
-![edit-recipe-button](documentation/docs_images/edit-button-view.png)
+![edit-flavor-button](documentation/docs_images/edit-button-view.png)
 
-![edit-recipe-page-view](documentation/docs_images/edit-recipe-page-view.png)
+![edit-flavor-page-view](documentation/docs_images/edit-flavor-page-view.png)
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*  
 
