@@ -304,6 +304,9 @@ In the dbdiagram.io code, this relationship is represented by a reference label,
 
 #### Navigation Menu
 The navigation bar adapts based on user login status and is fully responsive for both desktop and mobile devices.
+
+The navigation bar is visible on every page, depending on whether the user is logged in. It adjusts to different screen sizes, turning into a hamburger menu on smaller screens for easy access. When a user logs in or registers, a success message is shown.
+
 - As a developer, I want to create a navigation menu in the base template so that users can easily navigate through the website's pages. **(User Story#6) (must have)**
 - As a User, I can navigate between pages easily so that I can explore the website content without any confusion. **(User Story#23) (must have)**
 
@@ -335,7 +338,23 @@ A message indicating the user's login status is displayed in the nav bar:
 - Logged In: "You are logged in as [username]"
 - Not Logged In: "You are not logged in"
 
+#### Home Page
+
+The home page is designed to be welcoming and informative, clearly showing what the Flavor Fusion website is about. It gives users a preview of what to expect and invites them to explore more. The background image is carefully chosen to match the recipe theme and enhance the site's visual appeal.
+
+- As a visitor, I want to see an engaging home page so that I can understand what the recipe blog offers. **(User Story#8) (must have)**
+
+##### Home Page for All Users
+![home-page-view-unauthorised-users](documentation/docs_images/home-page-view-unauthorised.png)
+
+##### Home Page for Authorised Users
+![home-page-view-authorised-users](documentation/docs_images/home-page-view-authorised.png)
+
+
+
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
+
 
 ### Future Features
 
