@@ -60,6 +60,11 @@ a.nav-link {
     padding: 0.5rem 1rem;
 }
 
+.navbar-nav .nav-link.active {
+    color: var(--harvest-gold);
+    border-bottom: 2px solid var(--harvest-gold); 
+}
+
 .navbar-nav .nav-link:after {
     display: block;
     position: absolute;

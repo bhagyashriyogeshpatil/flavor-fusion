@@ -338,6 +338,8 @@ A message indicating the user's login status is displayed in the nav bar:
 - Logged In: "You are logged in as [username]"
 - Not Logged In: "You are not logged in"
 
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
 #### Home Page
 
 The home page is designed to be welcoming and informative, clearly showing what the Flavor Fusion website is about. It gives users a preview of what to expect and invites them to explore more. The background image is carefully chosen to match the recipe theme and enhance the site's visual appeal. 
@@ -352,6 +354,8 @@ For users who are not logged in, a "Sign Up Now" button is displayed on the home
 ##### Home Page for Authorised Users
 ![home-page-view-authorised-users](documentation/docs_images/home-page-view-authorised.png)
 
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
 #### Footer
 The footer of the Flavor Fusion website provides key information and links for users to connect with the developer.
 
@@ -360,6 +364,8 @@ Like the navigation bar, the footer appears on every page of the website. It inc
 - As a developer, I want to create a footer so that users can access social media links and see information about the developer and the website creation year at the bottom of every page. **(User Story#7) (must have)**
 
 ![footer-section-view](documentation/docs_images/footer-page-view.png)
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
 
 #### Sign Up / Log In / Log Out
 The navigation bar allows access to all pages, whether on large or small screens.
@@ -380,7 +386,31 @@ Success messages are shown to users after they sign up, log in, or log out.
 
 ![log-out-page-view](documentation/docs_images/log-out-page-view.png)
 
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
 
+#### New Flavor Page
+
+The "New Flavor" page allows users to submit a new flavor to the application. he link to this page is only visible to users who are logged in. When clicked, it takes them to a form where they can enter details about the new flavor.
+
+- Required Fields: 
+  - All fields, except for the optional image upload, must be filled out.
+  - If any required fields are left empty, error messages will appear below those fields.
+
+- Image Upload: 
+  - Users can upload an image for the flavor, but it's not required.
+  - If no image is provided, a default image will be used.
+
+- Submission and Feedback: 
+  - After submitting the form, users will see a success message.
+  - They will be redirected to the page displaying all flavors.
+
+- User-Friendly Design: 
+  - The form is styled with Crispy Forms and Bootstrap.
+  - This makes the form clean and easy to use.
+
+- As a logged-in user, I can share delicious recipes with others so that creating and publishing recipes. **(User Story#12) (must have)**
+
+![new-flavor-page-view](documentation/docs_images/new-flavor-page-view.png)
 
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
