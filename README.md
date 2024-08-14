@@ -392,7 +392,7 @@ Success messages are shown to users after they sign up, log in, or log out.
 
 #### New Flavor Page
 
-The New Flavor page allows users to submit a new flavor to the application. he link to this page is only visible to users who are logged in. When clicked, it takes them to a form where they can enter details about the new flavor.
+The New Flavor page allows users to submit a new flavor to the application. The link to this page is only visible to users who are logged in. When clicked, it takes them to a form where they can enter details about the new flavor.
 
 - Required Fields: 
   - All fields, except for the optional image upload, must be filled out.
@@ -413,8 +413,10 @@ The New Flavor page allows users to submit a new flavor to the application. he l
 - As a logged-in user, I can share delicious recipes with others so that creating and publishing recipes. **(User Story#12) (must have)**
 
 ##### New Flavor Page View
-![new-flavor-page-view](documentation/docs_images/new-flavor-page-view.png)
+![new-flavor-page-view](documentation/docs_images/new-flavor-page-view-desktop.png)
 
+##### New Flavor Page View Mobile
+![new-flavor-page-view-mobile](documentation/docs_images/new-flavor-page-view-mobile.png)
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
 
