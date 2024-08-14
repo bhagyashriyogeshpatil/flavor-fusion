@@ -361,6 +361,25 @@ Like the navigation bar, the footer appears on every page of the website. It inc
 
 ![footer-section-view](documentation/docs_images/footer-page-view.png)
 
+#### Sign Up / Log In / Log Out
+The navigation bar allows access to all pages, whether on large or small screens.
+
+Users can easily find and use the sign-up and log-in options to fully explore the website's features. Clear messages are displayed to guide users on whether they need to sign up or log in to view recipes, like, comment, or add New Flavors.
+
+Success messages are shown to users after they sign up, log in, or log out.
+
+- As a developer, I need to set up Django Allauth so that users can register, sign in, and access additional features on the website. **(User Story#10) (must have)**
+
+- As a Site User, I can register an account so that I can access publishing, commenting, and like/unlike features. **(User Story#11) (must have)**
+
+- As a developer, I want to style the allauth authentication pages - signup, login, and logout; so that users have a consistent experience.. **(User Story#24) (could have)**
+
+![sign-up-page-view](documentation/docs_images/sign-up-page-view.png)
+
+![log-in-page-view](documentation/docs_images/log-in-page-view.png)
+
+![log-out-page-view](documentation/docs_images/log-out-page-view.png)
+
 
 
 
