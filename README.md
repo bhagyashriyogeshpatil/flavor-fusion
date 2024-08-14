@@ -379,11 +379,13 @@ Success messages are shown to users after they sign up, log in, or log out.
 - As a Site User, I can register an account so that I can access publishing, commenting, and like/unlike features. **(User Story#11) (must have)**
 
 - As a developer, I want to style the allauth authentication pages - signup, login, and logout; so that users have a consistent experience.. **(User Story#24) (could have)**
-
+##### Sign Up Page View
 ![sign-up-page-view](documentation/docs_images/sign-up-page-view.png)
 
+##### Log In Page View
 ![log-in-page-view](documentation/docs_images/log-in-page-view.png)
 
+##### Log Out Page View
 ![log-out-page-view](documentation/docs_images/log-out-page-view.png)
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
@@ -410,6 +412,7 @@ The New Flavor page allows users to submit a new flavor to the application. he l
 
 - As a logged-in user, I can share delicious recipes with others so that creating and publishing recipes. **(User Story#12) (must have)**
 
+##### New Flavor Page View
 ![new-flavor-page-view](documentation/docs_images/new-flavor-page-view.png)
 
 
@@ -441,8 +444,10 @@ This page makes it simple for users to keep their recipes up to date.
 
 - As a logged-in User, I can edit my shared recipes so that I can correct and update recipe details as needed. **(User Story#13) (must have)**
 
+##### Edit Flavor button
 ![edit-flavor-button](documentation/docs_images/edit-button-view.png)
 
+##### Edit Flavor Page View
 ![edit-flavor-page-view](documentation/docs_images/edit-flavor-page-view.png)
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*  
@@ -468,9 +473,61 @@ The Delete Flavor feature allows logged-in users to remove recipes they have pre
 
 - As a logged-in user, I can delete my previously created or shared recipes so that they are removed from the site and no longer visible to others. **(User Story#14) (must have)**
 
+##### Delete Flavor Button
 ![delete-button-view](documentation/docs_images/delete-button-view.png)
 
+##### Confirm Deletion View
 ![confirm-delete-recipe-page-view](documentation/docs_images/confirm-delete-recipe-page-view.png)
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
+#### Recipe Details
+The Recipe Details page allows users to view all the important information about a specific recipe. This page includes the recipe's title, author, ingredients, preparation and cooking times, and step-by-step instructions. Users can also interact with the recipe by liking it, leaving comments, and, if they are the author, editing or deleting it.
+
+- Recipe Information:
+    - Shows the recipe's title and the user who posted it.
+    - Displays when the recipe was created.
+    - Indicates the type of cuisine.
+    - Lists the time needed to prepare and cook the recipe.
+    - Shows the number of servings.
+    - Provides a brief overview of the recipe.
+    - Ingredients and Instructions: Details what you need and how to make the dish.
+
+- Image Display:
+    - If an image is uploaded, it will be displayed on the page.
+    - A default image is shown if no image is provided.
+
+- User Interactions and Design:
+    - Logged-in users can like/unlike recipes, leave, edit, or delete comments, and the recipe's author can edit or delete their recipe. 
+    - The page is designed to be responsive, looking good on both desktop and mobile devices.
+
+The Recipe Details page is designed to be simple and user-friendly, providing all the necessary information and interactive options in a clear and accessible way.
+
+- As a Site User, I can view and read detailed recipes shared by others so that I can get inspiration. **(User Story#16) (must have)**
+
+##### Recipe Details View for Unauthorised Users
+![recipe-details-page-view-unauthorised-users-desktop](documentation/docs_images/recipe-details-view-unauthorised-users-desktop.png)
+
+<details><summary>Recipe Details View for Unauthorised Users Mobile</summary>
+
+![recipe-details-page-view-unauthorised-users-mobile](documentation/docs_images/recipe-details-view-unauthorised-users-mobile.png)
+</details>
+
+##### Recipe Details View for Logged-in Users
+![recipe-details-page-view-authorised-users-desktop](documentation/docs_images/recipe-details-recipe-user-desktop.png)
+
+<details><summary>Recipe Details View for Logged-in Users Mobile</summary>
+
+![recipe-details-page-view-authorised-users-mobile](documentation/docs_images/recipe-details-recipe-user-mobile.png)
+</details>
+
+##### Recipe Details View for Logged-in User and author of the recipe
+![recipe-details-page-view-recipe-author-desktop](documentation/docs_images/recipe-details-view-author-desktop.png)
+
+<details><summary>Recipe Details View for Logged-in Users Mobile</summary>
+
+![recipe-details-page-view-recipe-author-mobile](documentation/docs_images/recipe-details-view-author-mobile.png)
+</details>
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
 
