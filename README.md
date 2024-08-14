@@ -340,7 +340,9 @@ A message indicating the user's login status is displayed in the nav bar:
 
 #### Home Page
 
-The home page is designed to be welcoming and informative, clearly showing what the Flavor Fusion website is about. It gives users a preview of what to expect and invites them to explore more. The background image is carefully chosen to match the recipe theme and enhance the site's visual appeal.
+The home page is designed to be welcoming and informative, clearly showing what the Flavor Fusion website is about. It gives users a preview of what to expect and invites them to explore more. The background image is carefully chosen to match the recipe theme and enhance the site's visual appeal. 
+
+For users who are not logged in, a "Sign Up Now" button is displayed on the home page. This button appears only if the user is not authenticated, encouraging new visitors to sign up for an account.
 
 - As a visitor, I want to see an engaging home page so that I can understand what the recipe blog offers. **(User Story#8) (must have)**
 
@@ -349,6 +351,16 @@ The home page is designed to be welcoming and informative, clearly showing what 
 
 ##### Home Page for Authorised Users
 ![home-page-view-authorised-users](documentation/docs_images/home-page-view-authorised.png)
+
+#### Footer
+The footer of the Flavor Fusion website provides key information and links for users to connect with the developer.
+
+Like the navigation bar, the footer appears on every page of the website. It includes icons linking to GitHub and LinkedIn. These links let users view my work on GitHub and learn more about me on LinkedIn. Both links open in new tabs.
+
+- As a developer, I want to create a footer so that users can access social media links and see information about the developer and the website creation year at the bottom of every page. **(User Story#7) (must have)**
+
+![footer-section-view](documentation/docs_images/footer-page-view.png)
+
 
 
 
