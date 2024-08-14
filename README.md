@@ -31,6 +31,9 @@ Deployed website: [Link to website](https://flavor-fusion-blog-ffbf5a5ef8f9.hero
 - [Data Modeling and Database Design](#data-modeling-and-database-design)
     - [Entity-Relationship Diagram (ERD)](#entity-relationship-diagram-erd)
     - [Database Schema](#database-schema)
+- [Features](#features)
+    - [Current Features](#current-features)
+    - [Future Features](#future-features)
 ---
 
 ## Introduction
@@ -292,5 +295,48 @@ In the dbdiagram.io code, this relationship is represented directly between the 
 Ref: recipe.id < user_django_built_in_model.id [label: "likes", note: "Many-to-Many relationship"]
 ```
 In the dbdiagram.io code, this relationship is represented by a reference label, though the details may not appear directly in the visual diagram, keeping the design clean and focused.
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
+## Features
+
+### Current Features
+
+#### Navigation Menu
+The navigation bar adapts based on user login status and is fully responsive for both desktop and mobile devices.
+- As a developer, I want to create a navigation menu in the base template so that users can easily navigate through the website's pages. **(User Story#6) (must have)**
+- As a User, I can navigate between pages easily so that I can explore the website content without any confusion. **(User Story#23) (must have)**
+
+##### **Navigation Bar for All Users (desktop/mobile)**
+- Home: Always available.
+- Browse Recipes: Accessible to all users.
+- Sign Up: Shown to non-authenticated users.
+- Log In: Available for non-authenticated users.
+- Explore: Search feature available for all users.
+
+![navigation-bar-view-desktop](documentation/docs_images/nav-bar-unauthorised-desktop.png)
+
+![navigation-bar-view-mobile](documentation/docs_images/nav-bar-unauthorised-mobile.png)
+
+##### **Navigation Bar for Authorized Users (desktop/mobile)**
+- Home: Always accessible.
+- Browse Recipes: Same as for all users.
+- New Flavors: Only for logged-in users.
+- Log Out: Available for authenticated users.
+- Explore: Search feature available for all users.
+
+![navigation-bar-view-authorised-desktop](documentation/docs_images/nav-bar-authorised-desktop.png)
+
+![navigation-bar-view-authorised-mobile](documentation/docs_images/nav-bar-authorised-mobile.png)
+
+##### **User Authentication Status**
+
+A message indicating the user's login status is displayed in the nav bar:
+- Logged In: "You are logged in as [username]"
+- Not Logged In: "You are not logged in"
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
+### Future Features
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
