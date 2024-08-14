@@ -390,7 +390,7 @@ Success messages are shown to users after they sign up, log in, or log out.
 
 #### New Flavor Page
 
-The "New Flavor" page allows users to submit a new flavor to the application. he link to this page is only visible to users who are logged in. When clicked, it takes them to a form where they can enter details about the new flavor.
+The New Flavor page allows users to submit a new flavor to the application. he link to this page is only visible to users who are logged in. When clicked, it takes them to a form where they can enter details about the new flavor.
 
 - Required Fields: 
   - All fields, except for the optional image upload, must be filled out.
@@ -415,7 +415,37 @@ The "New Flavor" page allows users to submit a new flavor to the application. he
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
 
+#### Edit Flavor
 
+The Edit Flavor page allows logged-in users to update their previously shared recipes. This page ensures that users can correct or modify recipe details as needed.
+
+- Access Control:
+    - Only the user who posted the recipe can see and use the "Edit" button.
+
+- Pre-Populated Form:
+    - The form is pre-filled with the existing recipe details, making it easy to update.
+
+- Required Fields:
+    - All fields, except for the optional image upload, must be filled out. Error messages will appear if any required fields are left empty.
+
+- Image Upload:
+    - Users can update the image, but it's not required.
+
+- Submission and Feedback:
+    - After clicking "Update Flavor", a confirmation message appears, and the user is redirected to the recipes page.
+
+- User-Friendly Design:
+    - The form uses Crispy Forms and Bootstrap for a clean and easy-to-use interface.
+
+This page makes it simple for users to keep their recipes up to date.
+
+- As a logged-in User, I can edit my shared recipes so that I can correct and update recipe details as needed. **(User Story#13) (must have)**
+
+![edit-recipe-button](documentation/docs_images/edit-button-view.png)
+
+![edit-recipe-page-view](documentation/docs_images/edit-recipe-page-view.png)
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*  
 
 ### Future Features
 
