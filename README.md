@@ -447,6 +447,33 @@ This page makes it simple for users to keep their recipes up to date.
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*  
 
+#### Delete Flavor
+
+The Delete Flavor feature allows logged-in users to remove recipes they have previously created or shared. This functionality ensures users can manage their content by removing any outdated or unwanted recipes.
+
+- Access Control:
+    - The "Delete" button is visible only to the user who authored the recipe.
+
+- Confirmation Page:
+    - Users are directed to a confirmation page to verify their intention to delete the recipe.
+    - On this page, users can either confirm the deletion or cancel the action.
+
+- Deletion and Feedback:
+    - If the user confirms the deletion, the recipe is permanently removed from the site.
+    - A success message is displayed, and the user is redirected as appropriate.
+    - If the user cancels the deletion, they are taken back to the recipe's detailed page.
+
+- User-Friendly Design:
+    - The confirmation page uses Bootstrap for a clean and user-friendly interface, making it easy to navigate and manage recipes.
+
+- As a logged-in user, I can delete my previously created or shared recipes so that they are removed from the site and no longer visible to others. **(User Story#14) (must have)**
+
+![delete-button-view](documentation/docs_images/delete-button-view.png)
+
+![confirm-delete-recipe-page-view](documentation/docs_images/confirm-delete-recipe-page-view.png)
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
 ### Future Features
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
