@@ -302,7 +302,7 @@ In the dbdiagram.io code, this relationship is represented by a reference label,
 
 ### Current Features
 
-#### Navigation Menu
+#### **Navigation Menu**
 The navigation bar adapts based on user login status and is fully responsive for both desktop and mobile devices.
 
 The navigation bar is visible on every page, depending on whether the user is logged in. It adjusts to different screen sizes, turning into a hamburger menu on smaller screens for easy access. When a user logs in or registers, a success message is shown.
@@ -340,7 +340,7 @@ A message indicating the user's login status is displayed in the nav bar:
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
 
-#### Home Page
+#### **Home Page**
 
 The home page is designed to be welcoming and informative, clearly showing what the Flavor Fusion website is about. It gives users a preview of what to expect and invites them to explore more. The background image is carefully chosen to match the recipe theme and enhance the site's visual appeal. 
 
@@ -356,7 +356,7 @@ For users who are not logged in, a "Sign Up Now" button is displayed on the home
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
 
-#### Footer
+#### **Footer**
 The footer of the Flavor Fusion website provides key information and links for users to connect with the developer.
 
 Like the navigation bar, the footer appears on every page of the website. It includes icons linking to GitHub and LinkedIn. These links let users view my work on GitHub and learn more about me on LinkedIn. Both links open in new tabs.
@@ -367,7 +367,7 @@ Like the navigation bar, the footer appears on every page of the website. It inc
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
 
-#### Sign Up / Log In / Log Out
+#### **Sign Up / Log In / Log Out**
 The navigation bar allows access to all pages, whether on large or small screens.
 
 Users can easily find and use the sign-up and log-in options to fully explore the website's features. Clear messages are displayed to guide users on whether they need to sign up or log in to view recipes, like, comment, or add New Flavors.
@@ -390,7 +390,7 @@ Success messages are shown to users after they sign up, log in, or log out.
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
 
-#### New Flavor Page
+#### **New Flavor Page**
 
 The New Flavor page allows users to submit a new flavor to the application. The link to this page is only visible to users who are logged in. When clicked, it takes them to a form where they can enter details about the new flavor.
 
@@ -420,7 +420,7 @@ The New Flavor page allows users to submit a new flavor to the application. The 
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
 
-#### Edit Flavor
+#### **Edit Flavor**
 
 The Edit Flavor page allows logged-in users to update their previously shared recipes. This page ensures that users can correct or modify recipe details as needed.
 
@@ -454,7 +454,7 @@ This page makes it simple for users to keep their recipes up to date.
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*  
 
-#### Delete Flavor
+#### **Delete Flavor**
 
 The Delete Flavor feature allows logged-in users to remove recipes they have previously created or shared. This functionality ensures users can manage their content by removing any outdated or unwanted recipes.
 
@@ -483,7 +483,7 @@ The Delete Flavor feature allows logged-in users to remove recipes they have pre
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
 
-#### Recipe Details
+#### **Recipe Details**
 The Recipe Details page allows users to view all the important information about a specific recipe. This page includes the recipe's title, author, ingredients, preparation and cooking times, and step-by-step instructions. Users can also interact with the recipe by liking it, leaving comments, and, if they are the author, editing or deleting it.
 
 - Recipe Information:
@@ -530,6 +530,44 @@ The Recipe Details page is designed to be simple and user-friendly, providing al
 
 ![recipe-details-page-view-recipe-author-mobile](documentation/docs_images/recipe-details-view-author-mobile.png)
 </details>
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
+#### **Browse Recipes Page** 
+The Browse Recipes page is where users can explore all the available recipes on the site. It’s designed to be user-friendly, making it easy to find new dishes to try.
+
+- Each recipe is shown as a card with an image, title, brief description, cuisine type, author, and posting date, giving users a quick overview.
+- Recipes are displayed with a picture and a short description to help users quickly decide which ones they want to explore further.
+- A button on each card links to a detailed recipe page with full ingredients and instructions.
+- If no recipes match a search, a message is shown to suggest trying a different term.
+-  The layout adapts to different devices, so it looks great on both desktop and mobile screens.
+- Images are stored and loaded from Cloudinary for fast and reliable display.
+- As a user, I want to explore various recipes so that I can find new dishes to try. **(User Story#9) (should have)**
+
+##### Browse Recipes Page Desktop
+![browse-recipe-page-list-view-desktop](documentation/docs_images/browse-recipe-page-lists-view-desktop.png)
+
+<details><summary>Browse Recipes Page Mobile</summary>
+
+![browse-recipe-page-list-view-mobile](documentation/docs_images/browse-recipe-page-lists-view-mobile.png)
+</details>
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*  
+
+#### **Recipe Pagination**
+Recipe Pagination helps users navigate through multiple pages of recipes, making it easy to browse without overwhelming them with too much content at once.
+
+- Users can move between pages using "Previous" and "Next" links at the bottom of the page.
+- The system adjusts based on the number of recipes and the current page.
+- Pagination controls work well on all devices, from desktops to mobile phones.
+- Users can easily flip through pages to see all the recipes available.
+- As a Site User, I can view a paginated list of recipe posts so that I can choose which recipes to read. **(User Story#21) (should have)**
+
+##### Browse Recipe Pagination Next Page
+![browse-recipe-page-next-button](documentation/docs_images/browse-recipe-pagination-next-page.png)
+
+##### Browse Recipe Pagination Prev Page
+![browse-recipe-page-prev-button](documentation/docs_images/browse-recipe-pagination-prev-page.png)
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
 
