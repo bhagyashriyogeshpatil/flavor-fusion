@@ -28,6 +28,9 @@ Deployed website: [Link to website](https://flavor-fusion-blog-ffbf5a5ef8f9.hero
     - [Agile Planning](#agile-planning)
       - [User Stories and Management](#user-stories-and-management)
       - [Milestones Overview](#milestones-overview)
+- [Data Modeling and Database Design](#data-modeling-and-database-design)
+    - [Entity-Relationship Diagram (ERD)](#entity-relationship-diagram-erd)
+    - [Database Schema](#database-schema)
 ---
 
 ## Introduction
@@ -71,7 +74,6 @@ Flavor Fusion aims to provide a reliable and easy-to-use platform for cooking an
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
 
-----
 ## Learning Outcomes and Skill Development
 The main goal of this project is to improve my web development skills by using the Django framework in a practical setting. The specific learning objectives are:
 
@@ -124,6 +126,7 @@ The application uses various programming paradigms to achieve its functionality:
 
 **MVC Pattern:** Django follows the Model-View-Controller (MVC) pattern, with Models handling data, Views managing user interactions, and Controllers (or view functions) processing requests and responses.
 
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*  
 
 ## Agile Development Process
 
@@ -143,13 +146,13 @@ You can view the full Project Board, complete with all user stories and progress
 ![kanban board](documentation/docs_images/kanban-board.png)
 </details>
 
-#### User Stories and Management:
+#### **User Stories and Management:**
 
 - **Acceptance Criteria:** Each user story was developed with specific acceptance criteria to ensure clarity and focus. This approach guaranteed that every task met the necessary requirements before being marked as complete.
 
 - **MoSCoW Prioritization:** To manage priorities effectively, features were categorized using the MoSCoW method - 'Must have', 'Should have'and 'Could have'. This prioritization ensured that the core features (MVP) were developed first, with secondary features added if time permitted.
 
-#### Milestones Overview: 
+#### **Milestones Overview:** 
 
 1. **GitHub Repository Setup**
 
@@ -224,3 +227,70 @@ You can view the full Project Board, complete with all user stories and progress
     - User Story 28: Access 403 Error Handling (Should Have)
     - User Story 29: Custom 404 Page for Broken Links (Should Have)
     - User Story 30: Notification of Internal Errors (Should Have)
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*  
+
+## Data Modeling and Database Design
+
+### Entity-Relationship Diagram (ERD)
+
+The Entity-Relationship Diagram (ERD) provides a visual representation of the database's structure. It helps in planning and illustrating the SQL tables and the relationships between them. The ERD is an essential part of the database design that shows the entities, their attributes, and the types of relationships among the entities.
+
+The ER diagram was created with dbdiagram.io [dbdiagram.io](https://dbdiagram.io/home)
+to show how the models in the app are structured and related.
+
+![ERD](documentation/docs_images/ERD-flavor-fusion.png)
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
+### Database Schema
+
+The database schema is designed to efficiently manage and store data related to recipes, comments, and user interactions within the application.
+
+The ER diagram was created with dbdiagram.io [dbdiagram.io](https://dbdiagram.io/home)
+to show how the models in the app are structured and related. The Recipe model has all the key fields like title, ingredients, and instructions needed for a complete recipe. This design makes sure the website works well and gives users a great experience.
+
+The ER diagram showcases the relationships between the Recipe model, Comment model, CuisineType model and Django's built-in User model (user_django_built_in_model) as follows:
+
+- **User to Recipe: One-to-Many (1:M)**
+    - Each user can create multiple recipes.
+    - Each recipe is associated with one user.
+- **Recipe to Comment: One-to-Many (1:M)**
+    - Each recipe can have multiple comments.
+    - Each comment is associated with one recipe.
+- **User to Comment: One-to-Many (1:M)**
+    - Each user can make multiple comments.
+    - Each comment is associated with one user.
+- **CuisineType to Recipe: One-to-Many (1:M)**:
+    - Each cuisine type can be associated with multiple recipes.
+    - Each recipe is associated with one cuisine type.
+
+**Summary of Relationships:**
+- **User to Recipe (1:M):**
+A user can create multiple recipes, but each recipe is created by one user.
+- **Recipe to Comment (1:M):**
+A recipe can have multiple comments, but each comment is tied to a single recipe.
+- **User to Comment (1:M):**
+A user can make multiple comments, but each comment is made by a single user.
+- **CuisineType to Recipe (1:M)**:
+  A cuisine type can have multiple recipes, but each recipe is associated with only one cuisine type.
+
+These relationships were implemented using ForeignKey fields in the Django models:
+- The `Recipe` model includes a `ForeignKey` field (`author`) that references the `User` model to denote the creator of the recipe.
+- The `Comment` model includes `ForeignKey` fields (`recipe` and `author`) that reference the `Recipe` and `User` models respectively, indicating the recipe being commented on and the user making the comment.
+- The `Recipe` model includes a `ForeignKey` field (`cuisine_type`) that references the `CuisineType` model to denote the type of cuisine for the recipe.
+
+Additionally, a many-to-many relationship is established between the `Recipe` model and the `User` model to facilitate the "likes" feature, where users can like multiple recipes.
+
+The `likes` feature is implemented as a **many-to-many(M:M)** relationship between the `Recipe` and `User` models using Django's `ManyToManyField`. Although Django automatically creates a join table for this, it’s not explicitly shown in the ER diagram.
+
+In the dbdiagram.io code, this relationship is represented directly between the Recipe and user_django_built_in_model tables using the following reference:
+
+```
+// The many-to-many relationship between Recipe and user_django_built_in_model for likes
+
+Ref: recipe.id < user_django_built_in_model.id [label: "likes", note: "Many-to-Many relationship"]
+```
+In the dbdiagram.io code, this relationship is represented by a reference label, though the details may not appear directly in the visual diagram, keeping the design clean and focused.
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
