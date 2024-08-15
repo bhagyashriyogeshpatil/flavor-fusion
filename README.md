@@ -33,6 +33,7 @@ Deployed website: [Link to website](https://flavor-fusion-blog-ffbf5a5ef8f9.hero
     - [Database Schema](#database-schema)
 - [Features](#features)
     - [Current Features](#current-features)
+        - [CRUD Functionality](#CRUD-functionality)
     - [Future Features](#future-features)
 ---
 
@@ -626,6 +627,46 @@ The Comments section lets users share their thoughts and interact with others on
 ![comment-section-total-comments-view](documentation/docs_images/comment-section-total-comments-view.png)
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*  
+
+#### CRUD Functionality
+
+#### Recipe Management: Full CRUD Functionality Overview
+The application supports full CRUD (Create, Read, Update, Delete) functionality for managing recipes. Here’s an overview of each operation:
+
+**Create:**
+  - **New Flavor Page:** Allows users to submit new flavors to the application. The form includes required fields and an optional image upload. After submission, users receive feedback and are redirected to a page displaying all flavors.
+  - [**New Flavor Page**](#new-flavor-page)
+
+**Read:**
+  - **Recipe Details Page:** Displays detailed information about a specific recipe. Users can view the recipe details but cannot modify or delete the recipe from this page.
+  -	[**Recipe Details**](#recipe-details)
+
+**Update:**
+  - **Edit Flavor Page:** Allows users to update recipes they have previously shared. The form is pre-populated with existing details, and users receive feedback upon saving changes.
+  - [**Edit Flavor**](#edit-flavor)
+
+**Delete:**
+  - **Delete Flavor Feature:** Allows users to remove recipes they have created or shared. Users must confirm their decision to delete, with feedback provided upon completion.
+  - [**Delete Flavor**](#delete-flavor)
+
+This CRUD functionality ensures users can effectively manage their recipes, from creation to deletion.
+
+#### Comment Section CRUD Functionality
+The application supports full CRUD (Create, Read, Update, Delete) functionality for managing comments on recipes. Here’s an overview of each operation:
+
+**Create:**
+  - **Add Comment:** Logged-in users can add comments to recipe pages. Only authenticated users can see the comment form. After submitting a comment, users are informed that it is awaiting approval. The comment will be reviewed by an admin before it appears on the page.
+
+**Read:**
+  - **View Comments:** All approved comments are displayed on the recipe detail page. Users can easily read the conversation under each recipe, with comments ordered by their submission date.
+
+**Update:**
+ - **Edit Comment:** Users can update their own comments from the recipe detail page. The edit form is pre-populated with the existing comment text. After making changes, the updated comment is resubmitted for approval, and the user receives feedback that the comment is pending review.
+
+**Delete:**
+  - **Delete Comment:** Users can delete their own comments from the recipe detail page. Before deletion, users are prompted to confirm their decision. Upon successful deletion, users receive feedback that the comment has been removed.
+
+This CRUD functionality lets users manage their comments easily. It allows them to interact with recipe content. Admins can control which comments are published.
 
 ### Future Features
 
