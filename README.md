@@ -601,10 +601,12 @@ The Comments section lets users share their thoughts and interact with others on
 - If there are no comments, a message encourages users to be the first to comment.
 - Users can edit or delete their own comments if they change their mind.
 - Admins can approve or disapprove comments to keep discussions respectful.
+- A comment icon is shown next to the comment count for each recipe. The icon and count are clearly visible and well-aligned. The count, labeled “comments,” immediately follows the icon and accurately reflects the number of comments on the recipe.
 - As a Site User, I can leave comments on recipes so that I can interact with others and share my opinions. **(User Story#17) (should have)**
 - As a Site User, I can view comments on an individual recipe post so that I can read the conversation. **(User Story#18) (should have)**
 - As a Site Admin, I can approve or disapprove comments so that I can manage inappropriate content. **(User Story#20) (should have)**
 - As a Site User, I can modify or delete my comments on a post so that I can participate in the conversation. **(User Story#19) (could have)**
+- As a recipe viewer, I want to see a comment icon next to the comment count so that I can easily see how many comments are on a recipe **(User Story#32) (could have)**
 
 ##### Comments Section message encouraging users to join the conversation if no comments are present
 ![comment-view-message-encouraging-users](documentation/docs_images/comments-section-message-encouraging-users.png)
@@ -645,6 +647,21 @@ The Comments section lets users share their thoughts and interact with others on
 
 ##### Unliked Recipe for Authorised Users
 ![recipe-unliked-view](documentation/docs_images/recipe-unliked-view.png)
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>* 
+
+#### Admin Features
+As a Site Admin, you have full control over managing recipes and comments on the blog.
+- You can create, view, edit, and delete recipes. This includes managing both draft and published recipes, with drafts being visible only to you and the recipe author. 
+- Unauthorized users who try to access drafts will see a 403 error page.
+- You also have the ability to moderate comments. You can approve comments to make them visible on the site or disapprove them to keep inappropriate content hidden.
+- Additionally, you are responsible for setting up the site, including creating a superuser account to manage everything efficiently.
+- As a developer, I want to configure and deploy the recipe blog project so that I can ensure a smooth deployment process, test functionality, and create a superuser for efficient website management. **(User Story#3) (must have)**
+- As a Site Admin, I can create, read, update, and delete recipe posts so that I can effectively manage my recipe blog content. **(User Story#15) (must have)**
+- As a Site Admin, I can approve or disapprove comments so that I can manage inappropriate content. **(User Story#20) (should have)**
+- As a recipe author or admin, I can restrict access to draft recipes so that only authorized users can view them. **(User Story#33) (must have)**
+
+![admin-features-view](documentation/docs_images/admin-features-view.png)
 
 #### CRUD Functionality
 
