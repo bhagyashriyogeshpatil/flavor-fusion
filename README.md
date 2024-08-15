@@ -571,6 +571,27 @@ Recipe Pagination helps users navigate through multiple pages of recipes, making
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
 
+#### Explore Flavors
+The Explore Flavors feature allows users to discover and explore a wide range of recipes based on various search criteria. This feature improves user experience by offering an easy-to-use search interface and showing results that match the user's search.
+
+- The search bar is in the top navigation bar, making it easy to find and use on any page.
+- Users can search for recipes by typing keywords from the title, description, author, or cuisine type.
+- Search results show up as a list of recipes.
+- If no recipes match the search, a message will inform the user that no results were found.
+- If you don't search for anything, you'll see all available recipes on Browse Recipes page.
+- If a recipe's status is set to Draft, it will not appear in the public search results or on the main recipes listing page. Only recipes with a status of Published are visible to users when they explore or search for recipes.
+
+- As a Site User, I can explore recipes so that I can discover new and interesting dishes. **(User Story#22) (could have)**
+
+#####
+![explore-flavors-view](documentation/docs_images/explore-flavors-view.png)
+
+![explore-flavors-results-page-view](documentation/docs_images/explore-flavors-results-page-view.png)
+
+![explore-flavors-no-recipes-found-msg-view](documentation/docs_images/explore-flavors-no-recipes-found-msg-view.png)
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
 ### Future Features
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
