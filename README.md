@@ -592,6 +592,41 @@ The Explore Flavors feature allows users to discover and explore a wide range of
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
 
+#### Comment Section
+The Comments section lets users share their thoughts and interact with others on specific recipes. 
+- Only users who are logged in can see and use the comment field.
+- After submitting a comment, it goes to the admin for approval. Users are notified that their comment is awaiting approval.
+-  Approved comments appear under the recipe, so everyone can see the discussion.
+- If there are no comments, a message encourages users to be the first to comment.
+- Users can edit or delete their own comments if they change their mind.
+- Admins can approve or disapprove comments to keep discussions respectful.
+- As a Site User, I can leave comments on recipes so that I can interact with others and share my opinions. **(User Story#17) (should have)**
+- As a Site User, I can view comments on an individual recipe post so that I can read the conversation. **(User Story#18) (should have)**
+- As a Site Admin, I can approve or disapprove comments so that I can manage inappropriate content. **(User Story#20) (should have)**
+- As a Site User, I can modify or delete my comments on a post so that I can participate in the conversation. **(User Story#19) (could have)**
+
+##### Comments Section message encouraging users to join the conversation if no comments are present
+![comment-view-message-encouraging-users](documentation/docs_images/comments-section-message-encouraging-users.png)
+
+##### Comments Section for authorised Users awaiting approval
+![comment-view-authorised-user-awaiting-approval-msg](documentation/docs_images/comments-section-authorised-awaiting-approval-msg.png)
+
+![comment-view-authorised-user-awaiting-approval](documentation/docs_images/comments-section-authorised-awaiting-approval.png)
+
+##### Comments Section for authorised Users approved comment
+![comment-view-authorised-user-approved](documentation/docs_images/comments-section-authorised-approved.png)
+
+##### Comments Section for authorised Users Update comment
+![comment-view-authorised-user-update-comment](documentation/docs_images/comments-section-authorised-update-comment.png)
+
+##### Comments Section for unauthorised Users
+![comment-view-unauthorised-user](documentation/docs_images/comments-section-unauthorised.png)
+
+##### Total Number of Comments
+![comment-section-total-comments-view](documentation/docs_images/comment-section-total-comments-view.png)
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*  
+
 ### Future Features
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
