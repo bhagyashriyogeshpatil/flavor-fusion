@@ -628,6 +628,24 @@ The Comments section lets users share their thoughts and interact with others on
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*  
 
+#### Recipe Like/Unlike Feature
+ On the recipe detail page, users can like or unlike recipes.
+- On the detailed recipe page, a heart icon is displayed to indicate the like/unlike functionality.
+- Logged-in users can interact with the icon. Non-logged-in users see a disabled version.
+- Logged-in Users can click the empty heart icon to add their like. The icon will turn into a filled heart, and the like count will go up.
+- If you’re a logged-in user and have already liked the recipe, click the filled heart icon to unlike it. The icon will change back to an empty heart, and the like count will decrease.
+- For non-logged-in users, the like button is disabled and cannot be used.
+- As a logged-in User, I can like or unlike others' recipes so that I can interact with the content. **(User Story#25) (could have)**
+
+##### Recipe Like/Unlike Feature for Unauthorised Users
+![recipe-like-Unlike-recipe-view-unauthorised-users](documentation/docs_images/recipe-like-Unlike-recipe-view-unauthorised-users.png)
+
+##### Liked Recipe for Authorised Users
+![recipe-liked-view](documentation/docs_images/recipe-liked-view.png)
+
+##### Unliked Recipe for Authorised Users
+![recipe-unliked-view](documentation/docs_images/recipe-unliked-view.png)
+
 #### CRUD Functionality
 
 #### Recipe Management: Full CRUD Functionality Overview
@@ -667,6 +685,8 @@ The application supports full CRUD (Create, Read, Update, Delete) functionality 
   - **Delete Comment:** Users can delete their own comments from the recipe detail page. Before deletion, users are prompted to confirm their decision. Upon successful deletion, users receive feedback that the comment has been removed.
 
 This CRUD functionality lets users manage their comments easily. It allows them to interact with recipe content. Admins can control which comments are published.
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*  
 
 ### Future Features
 
