@@ -663,6 +663,31 @@ As a Site Admin, you have full control over managing recipes and comments on the
 
 ![admin-features-view](documentation/docs_images/admin-features-view.png)
 
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*  
+
+#### Draft Recipes Access Control
+This feature allows recipe authors and administrators to control who can see recipes that are still in draft mode. Draft recipes have a status of 0 and are only visible to the author or admins. If someone who is not authorized tries to view a draft recipe, they will see a custom 403 error page.
+
+- Only the recipe's author or an admin can view draft recipes (status = 0).
+- Unauthorized users trying to access a draft recipe will be redirected to a 403 error page explaining they don’t have permission.
+- This feature ensures that draft recipes remain private until the author decides to publish them.
+- If you see a 403 error, it's because the recipe is still in draft mode and you don’t have the necessary permissions to view it.
+- As a recipe author or admin, I can restrict access to draft recipes so that only authorized users can view them. **(User Story#33) (must have)**
+
+##### Draft Recipe View for Author
+![draft-recipe-view-for-author](documentation/docs_images/draft-recipe-view-author.png)
+
+##### Draft Recipe View for Admin
+![draft-recipe-view-for-admin](documentation/docs_images/draft-recipe-view-admin.png)
+
+##### Draft Recipe View for Unauthorized Users
+![draft-recipe-view-for-unauthorized users](documentation/docs_images/draft-recipe-view-unauthorized-users.png)
+
+##### Draft Recipe Status in Admin Panel
+![draft-recipe-status-in-admin-panel](documentation/docs_images/draft-recipe-status-in-admin-panel.png)
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*  
+
 #### CRUD Functionality
 
 #### Recipe Management: Full CRUD Functionality Overview

@@ -81,7 +81,8 @@ def recipe_detail(request, slug):
         # Allow access only to the author or an admin
         if request.user != recipe.author and not request.user.is_staff:
             context = {
-                'draft_recipe': True  # Pass this context variable to the 403 template
+                'draft_recipe': True,  # Pass this context variable to the 403 template
+                'recipe_title': recipe.title
             }
             return render(request, '403.html', context)  # Render the custom 403 page
 
