@@ -688,6 +688,49 @@ This feature allows recipe authors and administrators to control who can see rec
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*  
 
+
+#### User Feedback
+This application provides clear feedback to users about their actions.
+- Feedback messages, including success, error, and informational alerts, are shown at the top of the page and can be closed by users. 
+- The base template includes a section to display these messages.
+- Message will be displayed for :
+    - User Sign Up / Log In / Log Out 
+        - Message: "You have logged in successfully." / "You have signed up successfully." / "You have logged out successfully."
+        - Displayed when: Login, sign-up, or logout is successful.
+    - User Posted a Recipe 
+        - Message: "Your recipe has been posted successfully."
+        - Displayed when: A recipe is successfully added.
+    - User Editing the Recipe 
+        - Message: "Your recipe has been updated successfully."
+        - Displayed when: A recipe is successfully updated.
+    - User Deleting the Recipe 
+        - Message: "Your recipe has been deleted successfully."
+        - Displayed when: A recipe is successfully deleted.
+    - User Submitting a Comment on a Recipe 
+        - Message: "Your comment has been submitted and is awaiting approval."
+        - Displayed when: A comment is successfully submitted.
+    - User Editing a Comment 
+        - Message: "Comment updated and awaiting approval."
+        - Displayed when: A comment is successfully updated.
+    - User Deleting a Comment 
+        - Message: "Comment deleted successfully."
+        - Displayed when: A comment is successfully deleted.
+    - 403 Forbidden Error 
+        - Message: "Sorry, you do not have permission to access this page."
+        - Displayed when: Access to a page is denied due to permissions.
+        - For draft recipes: "You do not have permission to view the recipe titled 'Recipe Title' because it is still in draft mode."
+        - Displayed when: Access to a draft recipe is denied.
+
+![user-login-success-message](documentation/docs_images/user-login-message.png)
+
+![user-logout-success-message](documentation/docs_images/user-logout-message.png)
+
+![user-recipe-editing-success-message](documentation/docs_images/user-recipe-editing-message.png)
+
+![user-403-forbidden-error-message](documentation/docs_images/user-403-forbidden-error-message.png)
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*  
+
 #### CRUD Functionality
 
 #### Recipe Management: Full CRUD Functionality Overview
