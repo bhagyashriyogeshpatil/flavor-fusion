@@ -688,7 +688,6 @@ This feature allows recipe authors and administrators to control who can see rec
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*  
 
-
 #### User Feedback
 This application provides clear feedback to users about their actions.
 - Feedback messages, including success, error, and informational alerts, are shown at the top of the page and can be closed by users. 
@@ -728,6 +727,40 @@ This application provides clear feedback to users about their actions.
 ![user-recipe-editing-success-message](documentation/docs_images/user-recipe-editing-message.png)
 
 ![user-403-forbidden-error-message](documentation/docs_images/user-403-forbidden-error-message.png)
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*  
+
+#### Error Pages
+This project includes custom error pages that are designed to enhance user experience by providing clear and informative messages when an error occurs. The custom error pages are triggered in the following scenarios:
+
+- 403 Forbidden - Unauthorized Access:
+    - When users try to access content they don’t have permission to view, they are shown a 403 error page. It explains the situation and provides a link to return to the home page.
+    - If the recipe is in draft mode and you don’t have access, the page will mention this specifically. A link is provided to return to the home page, so you can keep browsing the website.
+
+- 404 Not Found - Page Not Found:
+    - If users navigate to a page that doesn’t exist, they see a 404 error page. It tells them the page isn’t available and offers a link to the home page.
+
+- 500 Internal Server Error:
+    - In case of server issues, a 500 error page appears. It informs users that something went wrong on our end and includes a link to the home page.
+
+Each error page is user-friendly and helps users easily find their way back to the home page.
+
+- As a User, I want to be directed to a 403 error page when attempting to access content or functionality that I am not authorized to view, so that I am aware of my access limitations and can take appropriate action.  **(User Story#28) (should have)**
+- As a recipe author or admin, I can restrict access to draft recipes so that only authorized users can view them.  **(User Story#33) (must have)**
+- As a User, I want to be directed to a custom 404 page when I navigate to a broken link or URL that does not exist, so that I am informed that the page I am looking for is not available and can be directed to other relevant sections of the website.  **(User Story#29) (should have)**
+- As a User, I want to be notified in case of an internal error so that I can understand what went wrong and how to proceed.  **(User Story#30) (should have)**
+
+##### 403 Forbidden Error Page
+![user-403-forbidden-error-message](documentation/docs_images/user-403-forbidden-error-message.png)
+
+##### Draft Recipe View for Unauthorized Users
+![draft-recipe-view-for-unauthorized users](documentation/docs_images/draft-recipe-view-unauthorized-users.png)
+
+##### 404 Not Found Page
+![user-404-not-found-page](documentation/docs_images/user-404-not-found-page.png)
+
+##### 500 Internal Server Page
+![user-500-internal-server-page](documentation/docs_images/user-500-internal-server-page.png)
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*  
 
