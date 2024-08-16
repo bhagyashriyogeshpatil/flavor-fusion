@@ -808,4 +808,10 @@ This CRUD functionality lets users manage their comments easily. It allows them 
 
 ### Future Features
 
+- Create personalized profile pages where users can view and manage their published and draft recipes, liked recipes, and account settings with updating user information such as email, password, and profile picture.
+- Add social media sharing buttons for Facebook, Twitter, and Pinterest.
+- Allow users to create collections or mark recipes as favorites to easily access later.
+- Organize recipes into categories like breakfast, lunch, dinner, vegetarian, etc.
+- Highlight seasonal or featured recipes on the homepage.
+
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
