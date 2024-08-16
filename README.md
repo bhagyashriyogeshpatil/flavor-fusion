@@ -35,6 +35,11 @@ Deployed website: [Link to website](https://flavor-fusion-blog-ffbf5a5ef8f9.hero
     - [Current Features](#current-features)
         - [CRUD Functionality](#CRUD-functionality)
     - [Future Features](#future-features)
+- [User Experience Design](#user-experience-design)
+    - [Strategy](#strategy)
+    - [Scope](#scope)
+    - [Structure](#structure)
+    - [Skeleton](#skeleton)
 ---
 
 ## Introduction
@@ -813,5 +818,40 @@ This CRUD functionality lets users manage their comments easily. It allows them 
 - Allow users to create collections or mark recipes as favorites to easily access later.
 - Organize recipes into categories like breakfast, lunch, dinner, vegetarian, etc.
 - Highlight seasonal or featured recipes on the homepage.
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
+## User Experience Design
+
+### Strategy
+The user experience design for the recipe management project aims to create a smooth, engaging, and easy-to-use platform. Using Agile methods, the project focuses on developing the platform in small steps and improving it based on user feedback. The strategy prioritizes user needs and behaviors, ensures the app works well on mobile devices with responsive design, and continuously refines the app through iterative improvements during development.
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
+### Scope
+
+The user experience design for the project has been completed with a focus on key areas. The front-end design is responsive and accessible, meeting UX principles and accessibility standards. Core features, including recipe management, user authentication, and interactive elements, have been implemented. The design includes intuitive navigation and a user-friendly interface to enhance engagement and satisfaction. Final adjustments were made from testing and feedback to ensure a smooth user experience.
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>* 
+
+### Structure
+
+The project structure is organized into key milestones and user stories, each detailing specific aspects of user experience design:
+
+**Milestones:** Each milestone marks an important phase, such as setting up the GitHub repository, initializing the Django project, and handling deployment and configuration. These milestones help keep the project on track and aligned with its goals.
+
+**User Stories:** User stories break down development tasks into smaller, manageable pieces. They include creating base templates, adding static files, and designing core pages like the home page and recipe detail page. Tasks are prioritized using the MoSCoW method to focus on essential features first.
+
+This structure supports focused development and a user-centered design process.
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
+### Skeleton
+
+The project's framework is outlined using wireframes and Entity-Relationship Diagrams (ERDs).
+
+**Wireframes:** Provide visual guides for key pages and features, including the home page, recipe browsing. Wireframes focus on layout, user flow, and interaction, ensuring a clear and easy-to-use experience.
+
+**Entity-Relationship Diagrams (ERDs):** Detail the database schema, showing relationships between models such as Recipe, Comment, User, and CuisineType. ERDs help in structuring data effectively to support application functionality and user interactions.
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
