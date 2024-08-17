@@ -17,6 +17,8 @@
     --harvest-gold: #D69723; 
     --goldenrod : #D59C2C;
     --slate-gray: #6C7A89;
+    --red : #7D1414;
+    --white : #fff;
 }
 
 html {
@@ -61,8 +63,8 @@ a.nav-link {
 }
 
 .navbar-nav .nav-link.active {
-    color: var(--harvest-gold);
-    border-bottom: 2px solid var(--harvest-gold); 
+    color: var(--red);
+    border-bottom: 2px solid var(--red); 
 }
 
 .navbar-nav .nav-link:after {
@@ -139,7 +141,7 @@ img.logo:active {
 }
 
 .btn-custom:hover {
-    color: #fff;
+    color: var(--white);
     background-color: var(--yellow);
     border-color: var(--yellow);
 }
@@ -147,7 +149,7 @@ img.logo:active {
 .btn-custom:focus, 
 .btn-custom:active, 
 .btn-custom.active {
-    color: #fff;
+    color: var(--white);
     background-color: var(--yellow);
     border-color: var(--yellow);
 }
@@ -224,13 +226,13 @@ footer > a {
 .custom-display {
     font-size: 2.5rem; 
     font-weight: 400;
-    color: #fff;
+    color: var(--white);
     margin-bottom: 15px;
 }
 
 .custom-lead {
     line-height: 1.5;
-    color: #fff;
+    color: var(--white);
     font-family: 'Lato', sans-serif;
     font-size: 1.25rem; 
 }
@@ -240,7 +242,7 @@ footer > a {
     border-radius: 5px;
     background-color: var(--yellow); 
     border-color: var(--yellow);
-    color: #fff;
+    color: var(--white);
     cursor: pointer;
     padding: 10px 20px;
     width: 35%; 
@@ -252,22 +254,20 @@ footer > a {
 }
 
 .custom-btn:hover {
-    color: #fff;
+    color: var(--white);
     background-color: var(--goldenrod);
     text-decoration: none;
     box-shadow: 0 4px 8px rgba(230, 171, 63, 0.5);
 }
 
 .custom-btn:focus {
-    color: #fff;
-    /* outline: 1px solid var(--olive-green);
-    outline-offset: 1px;  */
+    color: var(--white);
     background-color: var(--goldenrod);
     box-shadow: 0 0 0 2px rgba(230, 171, 63, 0.5);
 }
 
 .custom-btn:active {
-    color: #fff;
+    color: var(--white);
     background-color: #c5931a;
     box-shadow: 0 2px 4px rgba(230, 171, 63, 0.5);
     transform: translateY(2px);
@@ -295,14 +295,14 @@ footer > a {
 }
 
 .btn-signup:hover {
-    color: #fff;
+    color: var(--white);
     background-color: var(--goldenrod);
     text-decoration: none;
     box-shadow: 0 4px 8px rgba(230, 171, 63, 0.5);
 }
 
 .btn-signup:focus {
-    color: #fff;
+    color: var(--white);
     outline: 1px solid var(--olive-green);
     outline-offset: 1px; 
     background-color: var(--goldenrod);
@@ -311,7 +311,7 @@ footer > a {
 
 .btn-signup:active, 
 .btn-signup.active {
-    color: #fff;
+    color: var(--white);
     background-color: #c5931a;
     box-shadow: 0 2px 4px rgba(230, 171, 63, 0.5);
     transform: translateY(2px);
@@ -319,7 +319,7 @@ footer > a {
 
 .sign-up-link, 
 .login-link {
-    color: var(--harvest-gold);
+    color: var(--red);
     text-decoration: none;
 }
 
@@ -333,7 +333,7 @@ footer > a {
     margin: 0 auto; 
     max-width: 450px;
     padding: 20px; 
-    background-color: #fff; 
+    background-color: var(--white); 
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); 
 }
@@ -376,7 +376,7 @@ footer > a {
 /* Pagination*/
 .page-link {
     text-decoration: none;
-    color: #fff;
+    color: var(--white);
     background-color: var(--yellow);
     cursor: pointer;
     border-radius: 5px;
@@ -385,7 +385,7 @@ footer > a {
 
 .page-link:hover {
     text-decoration: none;
-    color: #fff;
+    color: var(--white);
     background-color: var(--goldenrod);
     box-shadow: 0 4px 8px rgba(230, 171, 63, 0.5);
 }
