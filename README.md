@@ -49,6 +49,9 @@ Deployed website:
         - [How to Fork](#how-to-fork)
         - [How to clone](#how-to-clone)
         - [Setting up your local environment](#setting-up-your-local-environment)
+- [Testing](#testing)
+
+
 
 ---
 
@@ -864,7 +867,16 @@ The project's framework is outlined using wireframes and Entity-Relationship Dia
 
 **Entity-Relationship Diagrams (ERDs):** Detail the database schema, showing relationships between models such as Recipe, Comment, User, and CuisineType. ERDs help in structuring data effectively to support application functionality and user interactions.
 
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>* 
+
+## Testing
+
+This section explains how to test the application and documents any bugs found during development, along with their fixes. It helps keep track of the application's quality and improvements.
+
+Please refer to [TESTING.md](/TESTING.md) for details.
+
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
 
 ## Deployment
 
@@ -1029,7 +1041,7 @@ Important points for before deployment:
 ### Setting up your local environment
 
 1. Create Virtual environment on your computer or use gitpod built in virtual environment feature.
-2. Create .env file. Place in inside flavor-fusionfolder. It needs to contain the variables from step 9.
+2. Create .env file. Place in inside flavor-fusion folder. It needs to contain the variables from step 9.
 - DATABASE_URL can be obtained for PostgreSQL from Code Institute.
 - SECRET_KEY - is the django secret key can be generated here.
 - CLOUDINARY_URL - is API key to your cloudinary account.
@@ -1039,3 +1051,4 @@ Important points for before deployment:
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
 
 </details>
+
