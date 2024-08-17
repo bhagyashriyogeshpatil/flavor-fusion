@@ -990,7 +990,7 @@ Important points for before deployment:
     - Click the button "View" to see the app or Click on "Open app" to view your deployed project.
     - For this project I used Manual deployment method to deploy the current state of the branch, every time I pushed the code from Gitpod.
 
-### Final Deployment Checklist
+#### Final Deployment Checklist
 - [ ] Environment variables configured in Heroku Config Vars.
 - [ ] `Procfile` created and correctly configured.
 - [ ] Python buildpack added in Heroku.
@@ -1007,9 +1007,7 @@ Important points for before deployment:
 <details id="local-deployment">
 <summary style="font-size: 1.2em; font-weight: bold;">Local Deployment</summary>
 
-<br>
-
-#### How to Fork
+### How to Fork
 
 1. Log in (or sign up) to Github.
 2. Go to the [repository](https://github.com/bhagyashriyogeshpatil/flavor-fusion) for this project, 
@@ -1018,7 +1016,7 @@ Important points for before deployment:
 5. Choose to copy only the main branch or all branches to the new fork.
 6. Click Create a Fork. A repository should appear in your GitHub
 
-#### How to Clone
+### How to Clone
 
 1. Log in (or sign up) to GitHub.
 2. Go to the [repository](https://github.com/bhagyashriyogeshpatil/flavor-fusion) for this project, 
@@ -1027,6 +1025,16 @@ Important points for before deployment:
 5. Type 'git clone' into the terminal and then paste the link you copied in step 3. Press enter.
     ```$ git clone https://github.com/bhagyashriyogeshpatil/flavor-fusion```
 6. Press Enter. Your local clone will be created.
+
+### Setting up your local environment
+
+1. Create Virtual environment on your computer or use gitpod built in virtual environment feature.
+2. Create .env file. Place in inside flavor-fusionfolder. It needs to contain the variables from step 9.
+- DATABASE_URL can be obtained for PostgreSQL from Code Institute.
+- SECRET_KEY - is the django secret key can be generated here.
+- CLOUDINARY_URL - is API key to your cloudinary account.
+3. Run command
+``` pip3 install -r requirements.txt ```
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
 
