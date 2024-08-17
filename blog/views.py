@@ -1,16 +1,15 @@
+# Standard Library Imports
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseForbidden
-from django.views.generic import (TemplateView, CreateView, ListView, DeleteView, UpdateView)
-from .models import Recipe, Comment
-from .forms import NewFlavorsForm
-from .forms import CommentForm
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.contrib import messages
 from django.urls import reverse_lazy
 from django.db.models import Q
-
-# To test the 403 Forbidden error page
-# from django.core.exceptions import PermissionDenied
+# Third-Party Imports
+from django.views.generic import (TemplateView, CreateView, ListView, DeleteView, UpdateView)
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib import messages
+# Local Application Imports
+from .models import Recipe, Comment
+from .forms import NewFlavorsForm, CommentForm
 
 # To test the 500 Internal Server Error page
 # from django.http import HttpResponseServerError
@@ -18,17 +17,42 @@ from django.db.models import Q
 # Create your views here.
 
 class Index(TemplateView):
+    """
+    Displays the index page of the blog.
+    """
     template_name = "blog/index.html"
 
 
 class RecipesList(ListView):
-    """View all recipes"""
+    """
+    Displays a paginated list of recipes with optional search filtering.
+
+    **Context**
+    ``recipes_list``
+        List of recipes, filtered by search query if provided.
+    ``no_results``
+        Indicates if no recipes were found for the search query (only if a query is used).
+    ``search_query``
+        The search query used, included if no results are found.
+
+    **Template:**
+    :template:`blog/recipes.html`
+    """
     template_name = "blog/recipes.html"
     model = Recipe
     context_object_name = "recipes_list"
     paginate_by = 6
 
     def get_queryset(self):
+        """
+        Returns a list of recipes, filtered by a search query if provided.
+
+        If a search query is given, it filters recipes by title, description, cuisine type, 
+        and author, and orders them by creation date. If no query is provided, it returns all recipes.
+
+        **Returns**
+        QuerySet: A queryset of Recipe objects.
+        """
         queryset = super().get_queryset()
         query = self.request.GET.get("q")
         
@@ -46,6 +70,15 @@ class RecipesList(ListView):
         return queryset
 
     def get_context_data(self, **kwargs):
+        """
+        Adds extra context for the template, including search results info.
+
+        **Context**
+        Adds `no_results` if no recipes matched the search query and `search_query` with the query used.
+
+        **Returns**
+        dict: The context data for the template.
+        """
         context = super().get_context_data(**kwargs)
         query = self.request.GET.get("q")
         if query and not context['recipes_list']:
@@ -53,14 +86,30 @@ class RecipesList(ListView):
             context['search_query'] = query
         return context
 
+
 class NewFlavors(LoginRequiredMixin, CreateView):
-    """Add New Flavors view"""
+    """
+    Allows logged-in users to add a new recipe.
+
+    **Context**
+    ``form``
+        The form for creating a new recipe.
+
+    **Template:**
+    :template:`blog/new_flavors.html`
+
+    **Success URL:**
+    Redirects to ``/recipes/`` upon successful submission.
+    """
     template_name = "blog/new_flavors.html"
     model = Recipe
     form_class = NewFlavorsForm
     success_url = "/recipes/"
 
     def form_valid(self, form):
+        """
+        Sets the current user as the author and shows a success message.
+        """
         form.instance.author = self.request.user
         msg = "Your recipe has been posted successfully."
         messages.add_message(self.request, messages.SUCCESS, msg)
@@ -70,9 +119,22 @@ class NewFlavors(LoginRequiredMixin, CreateView):
 def recipe_detail(request, slug):
     """
     Function-based view to render recipe in detail.
+    Shows details of a recipe and handles comment submissions.
+
+    **Context**
+    ``recipe``
+        The recipe being displayed.
+    ``comments``
+        Comments for the recipe.
+    ``comment_form``
+        Form to submit a new comment.
+
+    **Template:**
+    :template:`blog/recipe_detail.html`
+
+    **Error Template:**
+    :template:`403.html` (if the recipe is a draft and the user is not authorized)    
     """
-    # queryset = Recipe.objects.filter(status=1)
-    # recipe = get_object_or_404(queryset, slug=slug)
     recipe = get_object_or_404(Recipe, slug=slug)
     comments = recipe.comments.all() 
 
@@ -108,38 +170,79 @@ def recipe_detail(request, slug):
         "blog/recipe_detail.html", 
         {"recipe": recipe, "comments": comments, "comment_form": comment_form})
 
+
 class DeleteRecipe(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    """Delete a recipe"""
+    """
+    Deletes a recipe that belongs to the logged-in user.
+
+    **Template:**
+    :template:blog/confirm_delete.html
+
+    **Success URL:**
+    Redirects to the recipes list page after deletion.
+    """
     model = Recipe
     success_url = reverse_lazy('recipes')
 
     def test_func(self):
+        """
+        Checks if the user is the recipe's author.
+        """
         return self.request.user == self.get_object().author
 
     def form_valid(self, request, *args, **kwargs):
+        """
+        Shows a success message and deletes the recipe.
+        """
         msg = "Your recipe has been deleted successfully."
         messages.add_message(self.request, messages.SUCCESS, msg)
         return super().delete(request, *args, **kwargs)
 
 class EditRecipe(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    """ Edit/update a recipe """
+    """
+    Allows a logged-in user to edit their own recipe.
+
+    **Context**
+    ``form``
+        The form used to edit the recipe.
+
+    **Template:**
+    :template:`blog/edit_recipe.html`
+
+    **Success URL:**
+    Redirects to the recipes list page after updating.
+    """
     model = Recipe
     form_class = NewFlavorsForm
     template_name = "blog/edit_recipe.html"
     success_url = reverse_lazy('recipes')
 
     def test_func(self):
+        """
+        Checks if the user is the recipe's author.
+        """
         return self.request.user == self.get_object().author
 
     def form_valid(self, form):
+        """
+        Updates the recipe with the current user and shows a success message.
+        """
         form.instance.author = self.request.user
         msg = "Your recipe has been updated successfully."
         messages.add_message(self.request, messages.SUCCESS, msg)
         return super().form_valid(form)
 
+
 def like_recipe(request, slug):
     """
-    View to like or unlike a recipe.
+    Allows users to like or unlike a recipe.
+
+    **Template:**
+    Redirects to the recipe detail page after the action is performed.
+
+    **Details:**
+    - Authenticated users can like or unlike a recipe via POST request.
+    - `action` parameter determines whether to add or remove the like.
     """
     recipe = get_object_or_404(Recipe, slug=slug)
     user = request.user
@@ -157,7 +260,24 @@ def like_recipe(request, slug):
 
 def comment_edit_view(request, slug, comment_id):
     """
-    View to display the recipe detail page with the comment editing form.
+    Displays the recipe detail page with a form to edit a comment.
+
+    **Context**
+
+    ``recipe``
+        The recipe being viewed.
+
+    ``editing_comment``
+        The comment being edited.
+
+    ``comment_form``
+        Form for editing the comment.
+
+    ``comments``
+        List of all comments for the recipe.
+
+    **Template:**
+    :template:`blog/recipe_detail.html`
     """
     recipe = get_object_or_404(Recipe, slug=slug)
     comment = get_object_or_404(Comment, pk=comment_id)
@@ -175,9 +295,17 @@ def comment_edit_view(request, slug, comment_id):
         'comments': recipe.comments.all(),
     })
 
+
 def comment_update_view(request, slug, comment_id):
     """
     View to handle the comment update.
+
+    **Template:**
+    Redirects to the recipe detail page after the comment is updated.
+
+    **Details:**
+    - Only the comment author can update the comment.
+    - On successful update, the comment is set to pending approval.
     """
     comment = get_object_or_404(Comment, pk=comment_id)
 
@@ -201,7 +329,14 @@ def comment_update_view(request, slug, comment_id):
 def comment_delete_view(request, slug, comment_id):
     """
     View to handle the comment deletion.
-    """
+
+    **Template:**
+    Redirects to the recipe detail page after the comment is updated.
+
+    **Details:**
+    - Only the comment author can delete the comment.
+    - The comment is deleted on POST request.
+    """    
     comment = get_object_or_404(Comment, pk=comment_id)
 
     if comment.author != request.user:
@@ -213,10 +348,6 @@ def comment_delete_view(request, slug, comment_id):
         messages.success(request, "Comment deleted successfully.")
     
     return redirect('recipe_detail', slug=slug)
-
-# To test the 403 Forbidden error page
-# def my_view(request):
-#     raise PermissionDenied
 
 # To test the 500 Internal Server Error page
 # def trigger_500_error(request):

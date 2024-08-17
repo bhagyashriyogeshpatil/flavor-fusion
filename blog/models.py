@@ -1,8 +1,10 @@
+# Standard Library Imports
 from django.db import models
 from django.contrib.auth.models import User
-from cloudinary.models import CloudinaryField
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.template.defaultfilters import slugify
+# Third-Party Imports
+from cloudinary.models import CloudinaryField
 
 # Define STATUS_CHOICES
 STATUS_CHOICES = (
@@ -13,6 +15,9 @@ STATUS_CHOICES = (
 # Create your models here.
 # Define the CuisineType model
 class CuisineType(models.Model):
+    """
+    Represents a type of cuisine.
+    """
     name = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
@@ -20,6 +25,14 @@ class CuisineType(models.Model):
 
 # Define the Recipe model
 class Recipe(models.Model):
+    """
+    Represents a cooking recipe created by a user.
+    This model stores key details about a recipe, such as its title, description, 
+    ingredients, and instructions. 
+    It is linked to the following models:
+    - :model:`auth.User`: The user who created the recipe and users who like the recipe.
+    - :model:`CuisineType`: The type of cuisine the recipe belongs to.
+    """
     title = models.CharField(unique=True, max_length=250)
     slug = models.SlugField(unique=True, max_length=250)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='recipe_owner')
@@ -55,6 +68,10 @@ class Recipe(models.Model):
         return self.likes.count()
 
 class Comment(models.Model):
+    """
+    Stores a single comment entry related to :model:`auth.User`
+    and :model:`Recipe`.
+    """    
     recipe = models.ForeignKey(Recipe, related_name='comments', on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()

@@ -1045,8 +1045,12 @@ Important points for before deployment:
 - DATABASE_URL can be obtained for PostgreSQL from Code Institute.
 - SECRET_KEY - is the django secret key can be generated here.
 - CLOUDINARY_URL - is API key to your cloudinary account.
-3. Run command
-``` pip3 install -r requirements.txt ```
+3. Install the required dependencies by running: ```pip install -r requirements.txt``` in the terminal.
+
+    If the requirements.txt file doesn't exist, you can create it by running: ```pip3 freeze > requirements.txt``` 
+4. Run the project:
+After setting up the environment variables and installing dependencies, you can run the Django project locally using the following command:
+```python manage.py runserver```
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
 

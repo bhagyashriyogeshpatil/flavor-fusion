@@ -12,8 +12,6 @@ urlpatterns = [
     path('recipe_detail/<slug:slug>/comment/<int:comment_id>/edit/', comment_edit_view, name='comment_edit'),
     path('recipe_detail/<slug:slug>/comment/<int:comment_id>/update/', comment_update_view, name='comment_update'),
     path('recipe_detail/<slug:slug>/comment/<int:comment_id>/delete/', comment_delete_view, name='comment_delete'),
-    # To test the 403 Forbidden error page
-    # path('forbidden/', my_view, name='forbidden'),
     # To test the 500 Internal Server Error page
     # path('test-500/', trigger_500_error, name='test_500'),
 ]

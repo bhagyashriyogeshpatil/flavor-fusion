@@ -1,12 +1,19 @@
+# Standard library imports
 from django import forms
-from .models import Recipe, Comment
+# Third-party imports
 from django_summernote.widgets import SummernoteWidget
+# Local application imports
+from .models import Recipe, Comment
 
 class NewFlavorsForm(forms.ModelForm):
     """
     NewFlavors Form to create/add new recipes
     """
     class Meta:
+        """
+        Specifies the model and fields used in the form, 
+        along with custom widgets and labels.
+        """
         model = Recipe
         fields = ['title', 'description', 'featured_image', 'ingredients', 'instructions', 'cuisine_type', 'status', 'prep_time', 'cooking_time', 'servings', ]
 
@@ -36,6 +43,12 @@ class NewFlavorsForm(forms.ModelForm):
         }
 
 class CommentForm(forms.ModelForm):
+    """
+    Form class for users to comment on a post
+    """
     class Meta:
+        """
+        Specify the django model and order of the fields
+        """
         model = Comment
         fields = ('text',)
