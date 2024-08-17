@@ -8,7 +8,9 @@ Flavor Fusion is built using modern web technologies, including HTML, CSS, and P
 ![flavor-fusion-mockup-image]()
 
 
-Deployed website: [Link to website](https://flavor-fusion-blog-ffbf5a5ef8f9.herokuapp.com/)<br>
+Deployed website:
+ <a href="https://flavor-fusion-blog-ffbf5a5ef8f9.herokuapp.com/" target="_blank">Link to website</a>
+<br>
 
 ---
 
@@ -40,6 +42,14 @@ Deployed website: [Link to website](https://flavor-fusion-blog-ffbf5a5ef8f9.hero
     - [Scope](#scope)
     - [Structure](#structure)
     - [Skeleton](#skeleton)
+- [Deployment](#deployment)
+    - <a href="#prerequisites">Prerequisites</a>
+    - <a href="#heroku-deployment">Heroku Deployment</a>
+    - <a href="#local-deployment">Local Deployment</a>
+        - [How to Fork](#how-to-fork)
+        - [How to clone](#how-to-clone)
+        - [Setting up your local environment](#setting-up-your-local-environment)
+
 ---
 
 ## Introduction
@@ -245,7 +255,7 @@ You can view the full Project Board, complete with all user stories and progress
 
 The Entity-Relationship Diagram (ERD) provides a visual representation of the database's structure. It helps in planning and illustrating the SQL tables and the relationships between them. The ERD is an essential part of the database design that shows the entities, their attributes, and the types of relationships among the entities.
 
-The ER diagram was created with dbdiagram.io [dbdiagram.io](https://dbdiagram.io/home)
+The ER diagram was created with [dbdiagram.io](https://dbdiagram.io/home)
 to show how the models in the app are structured and related.
 
 ![ERD](documentation/docs_images/ERD-flavor-fusion.png)
@@ -256,7 +266,7 @@ to show how the models in the app are structured and related.
 
 The database schema is designed to efficiently manage and store data related to recipes, comments, and user interactions within the application.
 
-The ER diagram was created with dbdiagram.io [dbdiagram.io](https://dbdiagram.io/home)
+The ER diagram was created with [dbdiagram.io](https://dbdiagram.io/home)
 to show how the models in the app are structured and related. The Recipe model has all the key fields like title, ingredients, and instructions needed for a complete recipe. This design makes sure the website works well and gives users a great experience.
 
 The ER diagram showcases the relationships between the Recipe model, Comment model, CuisineType model and Django's built-in User model (user_django_built_in_model) as follows:
@@ -855,3 +865,169 @@ The project's framework is outlined using wireframes and Entity-Relationship Dia
 **Entity-Relationship Diagrams (ERDs):** Detail the database schema, showing relationships between models such as Recipe, Comment, User, and CuisineType. ERDs help in structuring data effectively to support application functionality and user interactions.
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
+## Deployment
+
+<details id="prerequisites">
+<summary style="font-size: 1.2em; font-weight: bold;">Prerequisites</summary>
+
+Ensure that Python and pip (Python's package installer) are installed on your system. These tools are necessary for setting up the local development environment. The process works as follows:
+
+- Install Python by following the instructions on the [official Python website](https://www.python.org/downloads/).
+- Ensure [Python](https://www.python.org/) is installed on your system.
+- After installing Python, pip should be included by default. You can verify pip installation with `pip --version`.
+- For installing libraries and modules, use `pip` or `pip3` depending on your Python version.
+
+Important points for before deployment:
+- The requirements for the project were added to a requirements.txt file using the command `pip3 freeze > requirements.txt` in the terminal.
+- In the root directory of your project, create a file named env.py to store your environment variables.
+  ```python
+  import os
+  os.environ.setdefault("DATABASE_URL", "postgres://your_database_url_here")
+  os.environ.setdefault("SECRET_KEY", "your_secret_key_here")
+  os.environ.setdefault("CLOUDINARY_URL", "cloudinary://your_cloudinary_url_here")
+  ```
+
+   Replace the placeholders (your_database_url_here, your_secret_key_here, and your_cloudinary_url_here) with your actual credentials.
+-  In .gitignore, include env.py to ensure sensitive information is not pushed to GitHub. 
+- **Security Note:** The `env.py` file contains sensitive information. Ensure that it is not shared or pushed to any public repository.
+-  In settings.py, link SECRET_KEY to the env.py file where the secret key variable is defined.
+-  In settings.py, set 'DEBUG = False' to prevent verbose error pages and to prevent Django serving static files itself instead of relying on Cloudinary.
+- **Migrations:** It is necessary to make migrations and migrate the models to the database before deployment.
+  Run the following commands to apply migrations before deployment:
+  ```bash
+  python manage.py makemigrations
+  python manage.py migrate
+  ```
+- **Collect Static Files:** Before deploying your Django project, you need to gather all static files into one location. This is done with the collectstatic command.
+  ```bash
+  python3 manage.py collectstatic
+  ```
+    When to Use: Only run this command if DEBUG is set to False. Heroku will handle static files automatically during deployment.
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
+</details>
+
+<details id="heroku-deployment">
+<summary style="font-size: 1.2em; font-weight: bold;">Heroku Deployment</summary>
+
+<br>
+
+1. **Heroku Account:**
+   - Make sure you have a Heroku account. If not, sign up on the [Heroku website](https://id.heroku.com/login)
+   
+2. **GitHub Repository:**
+   - Ensure your project is hosted on GitHub.
+   
+3. **Heroku Dashboard:**
+   - [Log in to your Heroku account](https://id.heroku.com/login) and go to the Heroku Dashboard.
+   
+4. **Create a New App:**
+   - On the dashboard, click `New` and choose `Create new app`.
+   
+5. **App Name:**
+   - Choose a unique name for your app, it cannot be the same as this app.
+   
+6. **Region & Create App:**
+   - Choose a region closest to you (EU or USA), then Select **Create App**
+
+7.  **The page of your project opens.**
+
+8.  **Heroku Postgres**
+    - Go to Resources Tab, Add-ons, search and add Heroku Postgres
+
+9. **New App**
+    - From the new app choose **Settings**, goto section 'Config Vars' click **Reveal Config Vars**, 
+    
+        - Config Vars for development of this project:
+            - CLOUDINARY_URL: 'API key to your cloudinary account'
+            - DISABLE_COLLECTSTATIC: '1'  :- Prevents Heroku from collecting static files, which is useful during development.
+            - DATABASE_URL: 'URL from your database account'
+            - SECRET_KEY: 'Generate your own secret key' 
+    
+        - Config Vars for production:
+            - CLOUDINARY_URL: 'API key to your cloudinary account'
+            - DATABASE_URL: 'URL from your database account' 
+            - SECRET_KEY: 'Generate your own secret key'
+
+        - Why DISABLE_COLLECTSTATIC: 1 is removed in production?
+
+             In production, Django needs to collect static files (like CSS and JavaScript) so they can be served correctly. The DISABLE_COLLECTSTATIC: 1 setting is removed to allow this process, ensuring your app works properly in a live environment.
+
+**=> Go back to your code**
+
+10. **Procfile**
+    - Heroku relies on the `Procfile` to determine how to run your application. For Django applications, it's common to use Gunicorn, a production-grade WSGI server. Gunicorn is a robust and performant alternative to the `manage.py runserver` command used in development, offering better speed and security optimizations.
+    - To set this up, create a file named Procfile at the root directory of the project (same directory as requirements.txt). **Note:** The Procfile has no file extension.
+    - In the Procfile, specify the command to start your web server with Gunicorn: 
+    ``` web: gunicorn PROJ_NAME.wsgi ```
+    - Replace PROJ_NAME with the name of your Django project directory (where settings.py is located).
+
+11. **ALLOWED_HOSTS**
+    - In your `settings.py`, add your Heroku app URL to the `ALLOWED_HOSTS`:
+    ```python
+     ALLOWED_HOSTS = ['your-app-name.herokuapp.com', 'localhost']
+    ```
+
+12. **Add and Commit Changes**
+    - Add and commit the changes in your code and push to github
+
+13. **Add Buildpack**
+    - Scroll down on the page and select "Add Buildpack". The buildpack ensures that Heroku installs all necessary dependencies for your application.
+    - Choose the "Python" buildpack. This will install all the Python dependencies listed in your requirements.txt file.
+   
+14. **Deploy**
+    - From the tab above select the 'deploy section'.
+
+15. **GitHub**
+    - For deploying this project, we're using GitHub as our method. After choosing GitHub, make sure to confirm the connection. Then, search for your repository name and once Heroku finds your repository - click "connect"
+
+16. **Choose deploy method**
+    - Scroll down to the section "Automatic Deploys". 
+    - Click "Enable automatic deploys" or choose "Deploy branch" and manually deploy.
+    - Click "Deploy branch" wait for the app to be built. Once this is done, a message should appear letting us know that the app was successfully deployed. 
+    - Click the button "View" to see the app or Click on "Open app" to view your deployed project.
+    - For this project I used Manual deployment method to deploy the current state of the branch, every time I pushed the code from Gitpod.
+
+### Final Deployment Checklist
+- [ ] Environment variables configured in Heroku Config Vars.
+- [ ] `Procfile` created and correctly configured.
+- [ ] Python buildpack added in Heroku.
+- [ ] `ALLOWED_HOSTS` updated in `settings.py`.
+- [ ] Migrations applied to the database.
+- [ ] `collectstatic` command run to gather static files for production
+- [ ] App successfully deployed and tested on Heroku.
+
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
+</details>
+
+<details id="local-deployment">
+<summary style="font-size: 1.2em; font-weight: bold;">Local Deployment</summary>
+
+<br>
+
+#### How to Fork
+
+1. Log in (or sign up) to Github.
+2. Go to the [repository](https://github.com/bhagyashriyogeshpatil/flavor-fusion) for this project, 
+3. Click the Fork button in the top right corner and select create a fork.
+4. One can change the name of the fork and add description
+5. Choose to copy only the main branch or all branches to the new fork.
+6. Click Create a Fork. A repository should appear in your GitHub
+
+#### How to Clone
+
+1. Log in (or sign up) to GitHub.
+2. Go to the [repository](https://github.com/bhagyashriyogeshpatil/flavor-fusion) for this project, 
+3. Click on the code button, select whether you would like to clone with HTTPS, SSH or GitHub CLI and copy the link shown.
+4. Open the terminal in your code editor or open command-line interface on your computer and change the current working directory to the location you want to use for the cloned directory. 
+5. Type 'git clone' into the terminal and then paste the link you copied in step 3. Press enter.
+    ```$ git clone https://github.com/bhagyashriyogeshpatil/flavor-fusion```
+6. Press Enter. Your local clone will be created.
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
+</details>
