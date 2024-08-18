@@ -50,8 +50,11 @@ Deployed website:
         - [How to clone](#how-to-clone)
         - [Setting up your local environment](#setting-up-your-local-environment)
 - [Testing](#testing)
-
-
+- [Technologies Used](#technologies-used)
+    - [Programming Languages](#programming-languages)
+    - [Frameworks and Libraries](#frameworks-and-libraries)
+    - [Database](#database)
+    - <a href="#tools-services">Tools and Services</a>
 
 ---
 
@@ -1056,3 +1059,80 @@ After setting up the environment variables and installing dependencies, you can 
 
 </details>
 
+## Technologies Used
+
+### Programming Languages
+
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) - is used to structure the content of the application.
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) - is applied to style the application, enhancing the user interface..
+- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - adds interactivity to web pages, improving the user experience.
+- [Python](https://www.python.org) - serves as the back-end programming language.
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
+### Frameworks and Libraries
+
+- [Django](https://www.djangoproject.com/) - a framework for developing web applications written in Python, structures the back-end functionality.
+- [Bootstrap](https://getbootstrap.com/) - a front-end framework, is used to help developers build responsive and mobile-first websites and web applications. It provides a collection of CSS and JavaScript tools for creating layouts, forms, buttons, navigation, and other interface components. 
+- [Cloudinary](https://cloudinary.com/) -  cloud-based platform, is used for storing and serving images, enhancing media management in the application.
+- [os](https://www.geeksforgeeks.org/os-module-python-examples/?ref=lbp) - The OS module in Python provides functions for interacting with the operating system.
+- [datetime](https://docs.python.org/3/library/datetime.html) - supplies classes to work with date and time
+- [psycopg2](https://pypi.org/project/psycopg2/) PostgreSQL database adapter for the Python programming language
+- [dj-database-url](https://pypi.org/project/dj-database-url/) - enables the ability to represent their database settings via a string
+- [gunicorn](https://gunicorn.org/) - handles HTML rendering, authentication, administration, and backend logic
+- [WhiteNoise](https://whitenoise.readthedocs.io/en/latest/) - allows web app to serve its own static files
+- [django-Allauth](https://docs.allauth.org/en/latest/) - addressing authentication, registration, account management as well as 3rd party (social) account authentication.
+- [django-crispy-forms](https://django-crispy-forms.readthedocs.io/en/latest/) - controls the rendering behavior of Django forms
+- [crispy-bootstrap](https://pypi.org/project/crispy-bootstrap5/) - enables crispy forms to use bootstrap for styling 
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
+### Database
+
+-  [PostgreSQL](https://dbs.ci-dbs.net/) - provided by the Code Institute, is employed as the database system for its robustness and compatibility with Django.
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
+<details id="tools-services">
+<summary style="font-size: 1.2em; font-weight: bold;">Tools and Services</summary>
+
+<br>
+
+- [Am I Responsive?](http://ami.responsivedesign.is/) - To show the website image on a range of devices.
+- [Balsamiq](https://balsamiq.com/) - Used to create wireframes.
+- [Cloudinary JPG to WEBP](https://cloudinary.com/tools/jpg-to-webp): Used to convert image to WEBP.
+- [Simpleimageresizer](https://www.simpleimageresizer.com/resize/webp): To resize images and change to webp format.
+- [Coolors](https://coolors.co/) - Used to create the colour scheme palette.
+- [dbdiagram.io](https://dbdiagram.io/home): A tool for designing database diagrams and visualizing database structures.
+- [Markup Validation Service](https://validator.w3.org/) - Used to check code ensuring that my HTML is error-free and adheres to the latest web standards.
+- [CSS Validation Service](https://jigsaw.w3.org/css-validator/#validate_by_input) - Used to check code ensuring that my CSS is error-free and adheres to the latest web standards.
+- [Code Institute Python Linter](https://pep8ci.herokuapp.com/): A tool to check Python code against some of the style conventions in [PEP8](https://peps.python.org/pep-0008/).
+- [Font Awesome](https://fontawesome.com/) - For the iconography on the website.
+- [Git](https://git-scm.com/) - For version control.
+- [Gitpod](https://gitpod.io) Streamlines your development process by providing a pre-configured, cloud-based development environment that's instantly ready for coding.
+- [Github](https://github.com/) - Essential for version control, allowing you to track changes, collaborate with others (if applicable), and secure online code storage.
+- [Google Dev Tools](https://developer.chrome.com/docs/devtools) - used during testing, debugging and styling.
+- [Google Fonts](https://fonts.google.com/) - A catalog of free, open-source fonts. Used for typography.
+- [Heroku](https://id.heroku.com/login)- A platform for deploying and hosting web applications. 
+- [Logo.com](https://logo.com/) - A platform for creating custom logos, icons
+- [Favicon.io](https://favicon.io/) - A tool for generating favicons and app icons for your website.
+- [PEP8](https://peps.python.org/pep-0008/)- Style Guide for Python Code.
+- [PostgreSQL](https://www.postgresql.org/) - Is a powerful, open source object-relational database system.
+- [Wave](https://wave.webaim.org) - WAVE® is a suite of evaluation tools that helps authors make their web content more accessible to individuals with disabilities.
+- [Django Secret Key Generator](https://djecrety.ir/) - An online tool for generating secret keys for Django applications.
+- [Random key generator](https://acte.ltd/utils/randomkeygen) - A Heroku-compatible tool for generating random keys.
+- [Adobe Stock](https://stock.adobe.com/) - Stock photos, videos, and more.
+- [Pexels](https://www.pexels.com) - Free stock photos and videos.
+- [Heroku Python Support](https://devcenter.heroku.com/articles/python-support#specifying-a-python-version) - Documentation on specifying a Python version for Heroku application.
+- [Cloudinary](https://cloudinary.com/users/register_free) - A cloud service for storing, managing, and delivering images 
+- [AllAuth Documentation](https://docs.allauth.org/en/latest/installation/quickstart.html) - Documentation for integrating AllAuth for authentication.
+- [Django Field Types](https://docs.djangoproject.com/en/4.2/ref/models/fields/#model-field-types) - Documentation on different field types available in Django models.
+- [Django Field Options](https://docs.djangoproject.com/en/4.2/ref/models/fields/#field-options) - Documentation on options available for Django model fields.
+- [PositiveIntegerField – Django Models](https://www.geeksforgeeks.org/positiveintegerfield-django-models/) - Guide on using 'PositiveIntegerField' in Django models.
+- [SummernoteWidget Documentation](https://github.com/summernote/django-summernote) - Documentation for using the Summernote WYSIWYG editor with Django.
+- [Django Mixins](https://docs.djangoproject.com/en/4.1/topics/class-based-views/mixins/) - Documentation on using mixins in Django class-based views.
+- [Django Messages Framework](https://docs.djangoproject.com/en/5.0/ref/contrib/messages/) - Official documentation for Django’s messaging framework.
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
+</details>
