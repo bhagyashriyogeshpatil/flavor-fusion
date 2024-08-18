@@ -4,7 +4,8 @@ from django.http import HttpResponseForbidden
 from django.urls import reverse_lazy
 from django.db.models import Q
 # Third-Party Imports
-from django.views.generic import (TemplateView, CreateView, ListView, DeleteView, UpdateView)
+from django.views.generic import (
+    TemplateView, CreateView, ListView, DeleteView, UpdateView)
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 # Local Application Imports
@@ -15,6 +16,7 @@ from .forms import NewFlavorsForm, CommentForm
 # from django.http import HttpResponseServerError
 
 # Create your views here.
+
 
 class Index(TemplateView):
     """
@@ -31,7 +33,8 @@ class RecipesList(ListView):
     ``recipes_list``
         List of recipes, filtered by search query if provided.
     ``no_results``
-        Indicates if no recipes were found for the search query (only if a query is used).
+        Indicates if no recipes were found for the search query
+        (only if a query is used).
     ``search_query``
         The search query used, included if no results are found.
 
@@ -47,15 +50,16 @@ class RecipesList(ListView):
         """
         Returns a list of recipes, filtered by a search query if provided.
 
-        If a search query is given, it filters recipes by title, description, cuisine type, 
-        and author, and orders them by creation date. If no query is provided, it returns all recipes.
+         If a search query is given, it filters recipes by title,
+        description, cuisine type, and author, and orders them by
+        creation date. If no query is provided, it returns all recipes.
 
         **Returns**
         QuerySet: A queryset of Recipe objects.
         """
         queryset = super().get_queryset()
         query = self.request.GET.get("q")
-        
+
         if query:
             queryset = queryset.filter(
                 Q(title__icontains=query) |
@@ -66,7 +70,6 @@ class RecipesList(ListView):
             ).order_by('-created_on')
         else:
             queryset = Recipe.objects.all()
-        
         return queryset
 
     def get_context_data(self, **kwargs):
@@ -74,7 +77,8 @@ class RecipesList(ListView):
         Adds extra context for the template, including search results info.
 
         **Context**
-        Adds `no_results` if no recipes matched the search query and `search_query` with the query used.
+        Adds `no_results` if no recipes matched the search query and
+        `search_query` with the query used.
 
         **Returns**
         dict: The context data for the template.
@@ -133,20 +137,22 @@ def recipe_detail(request, slug):
     :template:`blog/recipe_detail.html`
 
     **Error Template:**
-    :template:`403.html` (if the recipe is a draft and the user is not authorized)    
+    :template:`403.html`
+    (if the recipe is a draft and the user is not authorized)
     """
     recipe = get_object_or_404(Recipe, slug=slug)
-    comments = recipe.comments.all() 
+    comments = recipe.comments.all()
 
     # Check if the recipe is a draft (status = 0)
     if recipe.status == 0:
         # Allow access only to the author or an admin
         if request.user != recipe.author and not request.user.is_staff:
             context = {
-                'draft_recipe': True,  # Pass this context variable to the 403 template
+                # Pass this context variable to the 403 template
+                'draft_recipe': True,
                 'recipe_title': recipe.title
             }
-            return render(request, '403.html', context)  # Render the custom 403 page
+            return render(request, '403.html', context)
 
     # Handle the POST request for comments
     if request.method == 'POST':
@@ -157,7 +163,10 @@ def recipe_detail(request, slug):
                 comment.recipe = recipe
                 comment.author = request.user
                 comment.save()
-                messages.success(request, "Your comment has been submitted and is awaiting approval.")
+                messages.success(
+                    request,
+                    "Your comment has been submitted and is awaiting approval."
+                    )
                 return redirect('recipe_detail', slug=recipe.slug)
         else:
             messages.error(request, "You need to be logged in to comment.")
@@ -166,8 +175,8 @@ def recipe_detail(request, slug):
         comment_form = CommentForm()
 
     return render(
-        request, 
-        "blog/recipe_detail.html", 
+        request,
+        "blog/recipe_detail.html",
         {"recipe": recipe, "comments": comments, "comment_form": comment_form})
 
 
@@ -197,6 +206,7 @@ class DeleteRecipe(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         msg = "Your recipe has been deleted successfully."
         messages.add_message(self.request, messages.SUCCESS, msg)
         return super().delete(request, *args, **kwargs)
+
 
 class EditRecipe(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """
@@ -254,7 +264,6 @@ def like_recipe(request, slug):
                 recipe.likes.add(user)
             elif action == 'unlike':
                 recipe.likes.remove(user)
-    
     return redirect('recipe_detail', slug=slug)
 
 
@@ -287,7 +296,6 @@ def comment_edit_view(request, slug, comment_id):
         return redirect('recipe_detail', slug=slug)
 
     comment_form = CommentForm(instance=comment)
-    
     return render(request, 'blog/recipe_detail.html', {
         'recipe': recipe,
         'editing_comment': comment,
@@ -321,8 +329,9 @@ def comment_update_view(request, slug, comment_id):
             comment.save()
             messages.success(request, "Comment updated and awaiting approval.")
         else:
-            messages.error(request, "There was an error updating your comment.")
-    
+            messages.error(
+                request,
+                "There was an error updating your comment.")
     return redirect('recipe_detail', slug=slug)
 
 
@@ -336,7 +345,7 @@ def comment_delete_view(request, slug, comment_id):
     **Details:**
     - Only the comment author can delete the comment.
     - The comment is deleted on POST request.
-    """    
+    """
     comment = get_object_or_404(Comment, pk=comment_id)
 
     if comment.author != request.user:
@@ -346,7 +355,6 @@ def comment_delete_view(request, slug, comment_id):
     if request.method == "POST":
         comment.delete()
         messages.success(request, "Comment deleted successfully.")
-    
     return redirect('recipe_detail', slug=slug)
 
 # To test the 500 Internal Server Error page
