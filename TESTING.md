@@ -16,6 +16,9 @@ Return back to the [README.md](README.md) file.
 - [Manual test](#manual-test)
     - [Application Functionality Testing](#application-functionality-testing)
     - [Error Handling](#error-handling )
+- [Bug Overview](#bug-overview)
+    - [Solved Bugs](#solved-bugs)
+    - [Unsolved Bugs](#unsolved-bugs)
 ---
 ## Testing overview & environment
 
@@ -329,5 +332,129 @@ The recommended [CI Python Linter](https://pep8ci.herokuapp.com) was used to val
 |Invalid Login Attempt|Try to log in with incorrect credentials|An error message "The username and/or password you specified are not correct." is displayed on the login page|Works as expected|
 |Failed Form Submission|Submit a form with missing required fields|Error messages are shown next to the relevant form fields, and the form is not submitted|Works as expected|
 |Unauthorized Comment Edit/Delete|Try to edit or delete another user's comment|A custom 403 error page is displayed|Works as expected|
+
+*<span style="color: blue;">[Back to Content](#content)</span>*
+
+## Bug Overview
+
+### Solved Bugs
+
+**1.** LinkedIn Page Link Not Accessible
+
+  - **Issue:** The LinkedIn link in the footer was leading to a "Page not found 404" error.
+  - **Fix:** Added https:// to the LinkedIn URL in the footer, ensuring the link directs correctly to the LinkedIn page.
+
+**2.** Hero Background Image Not Visible After Deployment
+  - **Issue:** The hero background image on the home page, hosted on Cloudinary, was not displaying after deploying the site on Heroku.
+  - **Fix:** Resolved the issue by running the collectstatic command in the terminal and adding the CLOUDINARY_URL to the Reveal Config Vars in Heroku.
+
+**3.** Forbidden 403 CSRF Verification Error
+  - **Issue:** Encountered a "Forbidden 403 CSRF Verification" error when accessing the site after deploying on Heroku.
+  - **Fix:** Added the CSRF_TRUSTED_ORIGINS field to settings.py to include the necessary domains. The following lines were added to resolve the issue:
+  ```python
+  CSRF_TRUSTED_ORIGINS = [
+    "https://*.codeinstitute-ide.net",
+    "https://*.herokuapp.com"
+  ]
+  ```
+  - Resolved the issue based on guidance from [Stack Overflow](https://stackoverflow.com/questions/12174040/forbidden-403-csrf-verification-failed-request-aborted)
+
+**4.** Invalid filter: 'crispy'
+  - **Issue:** The error Invalid filter: 'crispy' suggests that Django Crispy Forms may not be properly installed or configured.
+  - **Fix:** 
+    - Installed Django Crispy Forms using pip : `pip install django-crispy-forms `.
+    - Added crispy_forms to INSTALLED_APPS in settings.py: 
+      ```
+      INSTALLED_APPS = [
+        ...
+        'crispy_forms',
+        ]
+      ```
+    - Specified the template pack to be used by Crispy Forms in settings.py : 
+      `CRISPY_TEMPLATE_PACK = 'bootstrap5'`
+    - Ensured that the `{% load crispy_forms_tags %}` statement is included at the top of your HTML templates where Crispy Forms is used
+
+**5.** Slug Field Not Auto-Populated in Admin Panel
+  - **Issue:** The slug field in the admin panel wasn’t automatically filled in based on the title, which caused errors like "duplicate key value violates unique constraint."
+    - IntegrityError occurred when attempting to save a new recipe with a non-unique slug value.
+  - **Fix:** This bug occurs when the slug field is empty or not unique, resulting in a conflict when saving new or existing recipes.
+    - To fix this, I imported 'slugify' from 'django.template.defaultfilters'.
+    - I then overrode the save method in the Recipe model to ensure slugs are unique:
+      ```python
+      from django.template.defaultfilters import slugify
+
+      def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+      ```
+  - Resolved the issue based on guidance from [Stack Overflow](https://stackoverflow.com/questions/31162620/django-slugs-key-slug-is-duplicated)
+
+**6.** Success Message Not Displayed After Recipe Deletion
+  - **Issue:** The success message did not show up after a recipe was deleted. This was because the 'DeleteRecipe' view used a static URL for 'success_url' and had issues with handling success messages.
+  - **Fix:**
+      - Changed the static URL to use reverse_lazy, which dynamically finds the URL based on its name.
+      ```python
+        from django.urls import reverse_lazy
+
+        success_url = reverse_lazy('recipe_list')
+      ```
+      - Adjusted the view to correctly display success messages after deleting a recipe.
+      - Added settings to style success messages with Bootstrap alert classes in settings.py.
+      ```python
+        from django.contrib.messages import constants as messages
+
+        MESSAGE_TAGS = {
+            messages.DEBUG: 'alert-secondary',
+            messages.INFO: 'alert-info',
+            messages.SUCCESS: 'alert-success',
+            messages.WARNING: 'alert-warning',
+            messages.ERROR: 'alert-danger',
+        }
+      ```
+
+**7.** 500 Error When Updating Recipe Image on Heroku
+  - **Issue:** The app shows a 500 Internal Server Error on Heroku when updating a recipe with a new image, even though it works fine locally. This is due to an issue with Cloudinary image handling.
+  - **Fix:** The `CLOUDINARY_URL` on Heroku was incorrect. I replaced it with the correct value to fix the issue.
+
+**8.** Incorrect Field Used for Filtering Recipes
+  - **Issue:** The RecipesList view attempted to filter recipes using cuisines_type__icontains=query, but this field does not exist in the Recipe model.
+  - **Fix:** Changed `cuisines_type__icontains=query` to `cuisine_type__name__icontains=query` to properly filter recipes by the name of the cuisine type.
+
+**9.** Filtering on ForeignKey Field Using icontains
+  - **Issue:** Attempting to use icontains on a ForeignKey field raised an error, as icontains is not supported for ForeignKey lookups.
+  - **Fix:** Replaced `author__icontains=query` with `author__username__icontains=author_query` to correctly filter by the author's username.
+
+**10.** NoReverseMatch Error for Login URL
+  - **Issue:** The NoReverseMatch error occurred because the login view was referenced with `{% url 'login' %}`, but Django Allauth provides the login view under the account namespace.
+  - **Fix:** Replaced `{% url 'login' %}` with `{% url 'account_login' %}` in the 'recipe-details.html' template to correctly link to the login page provided by Django Allauth.
+
+*<span style="color: blue;">[Back to Content](#content)</span>*
+
+### Unsolved Bugs
+
+**1.** Image Field Not Showing Previously Uploaded Image
+- When editing a recipe in the "Edit Flavor" page, the image field (featured_image) does not display the currently uploaded image. Instead, it only shows a "Choose File" button, and there is no indication of the existing image.
+  - The image field in the Recipe model uses Cloudinary for handling image uploads.
+  - The form used for editing (NewFlavorsForm) includes the featured_image field.
+  - In the template (edit_recipe.html), the form is rendered using Crispy Forms, but the previously uploaded image is not displayed.
+  - Proper Functioning of the Edit Flavor Page:
+    - The "Edit Flavor" page correctly renders the form for editing a recipe. The form includes fields for updating the recipe's title, description, ingredients, instructions, and more.
+    - When uploading a new image, the form allows file selection and proper handling of the new image with Cloudinary.
+    - After successfully updating a recipe, a success message is displayed confirming the update.
+  - Expected Behavior: 
+    - Users should be able to edit all recipe details, including uploading a new image. The previously uploaded image should be visible or replaced as needed.
+
+    ![unsolved-bug-edit-flavor-page-currently-image-field](documentation/docs_images/testing/unsolved-bug-edit-flavor-page-currently-image-field.png)
+
+**2.** Custom Styles Not Applying to Ingredients and Instructions Fields
+
+- Custom CSS styles are not applying to the ingredients and instructions fields on both the "Edit Flavor" "New Flavor" pages. These fields use the SummernoteWidget, which renders a rich text editor, and custom styles are not being reflected as expected.
+  - The SummernoteWidget is used for ingredients and instructions fields in the NewFlavorsForm form.
+  - Custom CSS has been applied to other fields, but not to these Summernote editors.
+  - Attempts to apply custom CSS to the Summernote editors have not resulted in any visible changes.
+  - The SummernoteWidget might be applying its own styles or overriding the custom CSS due to specificity or inline styles.
+  - Attempts to apply custom styles, including the use of !important declarations, have been unsuccessful.
+
+    ![unsolved-bug-new-flavor-page-ingredients-instructions-field](documentation/docs_images/testing/unsolved-bug-new-flavor-page-ingredients-instructions-field.png)
 
 *<span style="color: blue;">[Back to Content](#content)</span>*
