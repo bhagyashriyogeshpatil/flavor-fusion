@@ -13,7 +13,9 @@ Return back to the [README.md](README.md) file.
 - [Automated Testing](#automated-testing)
 - [Code Validation](#code-validation)
 - [Lighthouse](#lighthouse)
-
+- [Manual test](#manual-test)
+    - [Application Functionality Testing](#application-functionality-testing)
+    - [Error Handling](#error-handling )
 ---
 ## Testing overview & environment
 
@@ -254,3 +256,78 @@ The recommended [CI Python Linter](https://pep8ci.herokuapp.com) was used to val
 
 *<span style="color: blue;">[Back to Content](#content)</span>*
 
+## Manual Test
+
+### Application Functionality Testing
+
+| Page | Feature/Link/Button	| Action	| Expected Result	| Actual Result |
+|---|---|---|---|---|
+|All Pages- Navigation Bar | Navigation Bar  | View the navigation bar on desktop and mobile  | The navigation bar is visible at the top of every page, adapting to different screen sizes (hamburger menu on mobile)  | Works as expected  |
+|All Pages- Navigation Bar | Logo | Verify the logo image and link |	The logo is visible on the navigation bar, links to the home page, and is displayed correctly with the expected image. | Works as expected |
+| All Pages - Navigation Bar | "Home" link | Click the link |	Redirects to the Home page | Works as expected |
+| Home Page | Background Image |View the home page|The background image is visible and enhances the site's visual appeal, matching the recipe theme|Works as expected|
+|Home Page|Welcome Message|View the home page|A welcoming message is prominently displayed, explaining what the Flavor Fusion website is about|Works as expected|
+| Home Page | "Sign Up Now" button (when logged out) | View the home page as a non-authenticated user | The "Sign Up Now" button is visible, inviting users who are not logged in to create an account. | Works as expected |
+|Home Page|Sign Up Now Button|View the home page as an authenticated user|The "Sign Up Now" button is not displayed for authenticated users|Works as expected|
+|Home Page|Navigation Links|Click any available navigation links (e.g., "Browse Recipes")|The user is redirected to the corresponding page (e.g., Browse Recipes) upon clicking.|Works as expected|
+|Home Page|Page Responsiveness|Resize browser window to various screen sizes|The home page layout and background image adapt smoothly to different screen sizes, maintaining visual appeal.|Works as expected|
+| All Pages - Navigation Bar | "Browse Recipes" link | Click the link | Redirects to the the recipes listing page | Works as expected |
+| Browse Recipes Page | Recipe Card | View recipe cards | Each recipe card shows an image, title, brief description, author, cuisine type, posting date, and a "View Recipe" button. |  Works as expected |
+| Browse Recipes Page | "View Recipe" Button | Click the "View Recipe" button |  Redirects to the detailed recipe page for the selected recipe. | Works as expected |
+| Browse Recipes Page |  Mobile View | Test on a mobile device | The layout adapts, showing recipe cards and pagination controls correctly on smaller screens. | Works as expected |
+| Browse Recipes Page |  Default Image|  View a recipe card with no uploaded image | A default placeholder image from Cloudinary is displayed on the recipe card.  | Works as expected |
+| Browse Recipes Page |  Desktop View | Test on a desktop device  | The layout adapts, showing recipe cards and pagination controls correctly on larger screens.  | Works as expected |
+| Browse Recipes Page |"Previous" button | Click "Previous" link | Navigate to the previous page of recipes | Works as expected |
+| Browse Recipes Page | "Next" button | Click "Next" link | Navigate to the next page of recipes | Works as expected |
+| Browse Recipes Page | Pagination Behavior | Verify pagination behavior with varying numbers of recipes and pages |Pagination controls should adjust based on the number of recipes and the total number of pages, with 6 recipes displayed per page | Works as expected |
+| All Pages - Navigation Bar | "Log In" link (when logged out) | Click the link | Redirects to the Login page | Works as expected |
+| All Pages - Navigation Bar | "Log Out" link (when logged in) | Click the link | Logs the user out, displays the "Log Out" confirmation page, and redirects to the Home page with a logout message.| Works as expected |
+| Log Out Confirmation Page | Confirm logout on the "Log Out" page | User clicks the "Log Out" button on the confirmation page | User is logged out and redirected to the Home page with a logout success message displayed | Works as expected |
+| All Pages - Navigation Bar | "Explore" link | Click the link | User is taken to the Browse Recipes page where they can search for recipes. All available recipes are shown by default. | Works as expected |
+| Explore Flavors Feature | Perform a search using the search bar | Enter keywords (e.g., title, description, author, or cuisine type) in the search bar and press Enter. | Matching recipes are displayed in a list. If no match is found, a "No results found" message is displayed | Works as expected |
+| Explore Flavors Feature | Empty search query | Do not enter anything in the search bar and press Enter | All available (Published) recipes are displayed | Works as expected |
+| Explore Flavors Feature | Search with a keyword related to a Draft recipe |Enter a keyword related to a recipe that is in Draft status and press Enter |The Draft recipe should not appear in the search results | Works as expected |
+| Navigation Bar| "New Flavor" link | Logged-in user clicks the "New Flavor" link |User is taken to the New Flavor page with a form to submit a new recipe | Works as expected |
+| New Flavor Page | "Submit New Flavor" button | Submit the form with all required fields filled out | The form is submitted successfully, and the user is redirected to the page displaying all flavors with a success message shown | Works as expected |
+| New Flavor Page | "Submit New Flavor" button | Submit the form with required fields left empty | Error messages appear below each required field that was left empty, and the form is not submitted | Works as expected |
+| New Flavor Page | "Submit New Flavor" button | Submit the form without uploading an image |The form is submitted successfully with a default image assigned to the new flavor | Works as expected |
+| New Flavor Page | "Submit New Flavor" button | Submit the form with an uploaded image | The form is submitted successfully, and the new flavor is displayed with the uploaded image | Works as expected |
+| New Flavor Page | Form elements | Review the styling and usability of the form | The form should be clean and easy to use, styled with Crispy Forms and Bootstrap for a user-friendly experience | Works as expected |
+| Recipe Detail Page | Page Elements (Title, Author, etc.) | Navigate to a recipe's detail page and inspect the page elements | The page should display the recipe’s title, author, creation date, cuisine type, preparation and cooking times, servings, overview, ingredients, instructions, and image (or default image if none is provided) | Works as expected |
+| Recipe Detail Page | "Edit" button (for recipes owned by the user, including drafts) | Click the button |Redirects to the Edit Recipe page with the form pre-populated with existing details| Works as expected |
+| Edit Flavor Page | Pre-populated Form | Verify that the form fields are pre-filled with existing recipe details | The form fields should display the current details of the recipe, including title, ingredients, instructions, etc. | Works as expected |
+| Edit Flavor Page | Required Fields | Leave one or more required fields empty and attempt to submit the form | Error messages should appear below the empty fields, indicating that the required fields must be filled out | Works as expected |
+| Edit Flavor Page | Image Upload | Upload a new image or leave the image upload field blank and submit | If a new image is uploaded, it should replace the old one. If no image is uploaded, the existing image should remain | Works as expected |
+| Edit Flavor Page | "Update Flavor" button | Click the "Update Flavor" button |A confirmation message should appear indicating that the recipe has been updated, and the user should be redirected to the recipes page | Works as expected |
+| Recipe Detail Page |"Delete" button (for recipes owned by the user, including drafts)| Click the button | Prompts for confirmation and deletes the recipe upon confirmation, with feedback provided | Works as expected |
+| Delete Confirmation Page | "Confirm" button | Click the "Confirm" button on the confirmation page |The recipe is permanently removed from the site, a success message is displayed, and the user is redirected to an appropriate page (e.g., the recipes list) | Works as expected |
+| Delete Confirmation Page | "Cancel" button | Click the "Cancel" button on the confirmation page | The user is redirected back to the recipe’s detail page, and no changes are made to the recipe | Works as expected |
+| Recipe Detail Page | Like/Unlike Button (Heart Icon) | Click the heart icon for a logged-in user; check for both liked and unliked states | For a logged-in user, clicking an empty heart icon should fill it and increase the like count. Clicking a filled heart icon should empty it and decrease the like count. Non-logged-in users should see a disabled icon. | Works as expected |
+| Recipe Detail Page | Like Button (Non-logged-in User) | Inspect the heart icon for a non-logged-in user | The heart icon should be disabled and unclickable for non-logged-in users | Works as expected |
+| Recipe Detail Page | Comments Section | Verify the presence and functionality of the comments section | The comments section should be visible if there are comments. If no comments are present, a message encouraging users to comment should be displayed. Comments should be displayed with an approval message if pending. | Works as expected |
+| Recipe Detail Page - Comments Section | Comment Field | Attempt to submit a comment while logged in | The comment should be submitted and appear with a notification that it is awaiting approval. Comments should be visible after approval | Works as expected |
+| Recipe Detail Page - Comments Section | Edit/Delete Comment (loged-in User) | Edit or delete a comment if it was posted by the logged-in user |The comment should be edited or deleted as requested, with changes reflected immediately on the page | Works as expected |
+| Recipe Detail Page - Comments Section | Admin Approval Interface | Log in as an admin and review the comments awaiting approval |Admins should be able to approve or disapprove comments. Approved comments should appear on the recipe page; disapproved comments should not. | Works as expected |
+| Recipe Detail Page - Comments Section | Comment Icon and Count | Verify that the comment icon and count are correctly displayed next to the liked count | The comment icon should be visible, and the count should accurately reflect the number of comments on the recipe | Works as expected |
+|All Pages - Footer|Footer Display|View the footer on any page|The footer is visible at the bottom of every page on the website.| Works as expected |
+|All Pages - Footer|GitHub Icon|Click the GitHub icon|The GitHub profile opens in a new tab| Works as expected |
+|All Pages - Footer|LinkedIn Icon|Click the LinkedIn icon|The LinkedIn profile opens in a new tab| Works as expected |
+|All Pages - Footer|Mobile View|View the footer on a mobile device|The footer is responsive, displaying the icons and information correctly on smaller screens| Works as expected |
+|All Pages - Footer|Desktop View|View the footer on a desktop device|The footer displays correctly at the bottom of the page on larger screens.| Works as expected |
+|All Pages - Footer|Website Info|View the footer text|The footer includes text with developer information and the website creation year| Works as expected |
+
+*<span style="color: blue;">[Back to Content](#content)</span>*
+
+### Error Handling 
+
+| Feature	| Action	| Expected Result	| Actual Result |
+|---|---|---|---|
+|403 Forbidden Error|Attempt to access a restricted page (e.g., Edit/Delete page of another user's recipe)|A custom 403 error page is displayed|Works as expected|
+|403 Forbidden Error (Draft Recipe)|Attempt to view another user's draft recipe|A custom 403 error page is displayed|Works as expected|
+|404 Page Not Found Error|Enter a non-existent URL or follow a broken link|A custom 404 error page is displayed|Works as expected|
+|500 Error (Internal Server)|Visit http://localhost:8000/test-500/ to trigger the 500 error by accessing the trigger_500_error view.|A custom 500 error page should be displayed with a user-friendly message indicating a server issue.|Works as expected|
+|Invalid Login Attempt|Try to log in with incorrect credentials|An error message "The username and/or password you specified are not correct." is displayed on the login page|Works as expected|
+|Failed Form Submission|Submit a form with missing required fields|Error messages are shown next to the relevant form fields, and the form is not submitted|Works as expected|
+|Unauthorized Comment Edit/Delete|Try to edit or delete another user's comment|A custom 403 error page is displayed|Works as expected|
+
+*<span style="color: blue;">[Back to Content](#content)</span>*
