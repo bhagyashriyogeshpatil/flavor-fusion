@@ -55,7 +55,11 @@ Deployed website:
     - [Frameworks and Libraries](#frameworks-and-libraries)
     - [Database](#database)
     - <a href="#tools-services">Tools and Services</a>
-
+- [Credits and Acknowledgements](#credits-and-acknowledgements)
+    - [Code](#code)
+    - [Media](#media)
+    - [Content](#content)
+    - [Acknowledgements](#acknowledgements)
 ---
 
 ## Introduction
@@ -1136,3 +1140,45 @@ After setting up the environment variables and installing dependencies, you can 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
 
 </details>
+
+## Credits and Acknowledgements
+
+### Code
+- [CodePen Navigation Hover Effects](https://codepen.io/maheshambure21/pen/QwXaRw) -  Used this example of beautiful navigation hover effects.
+
+### Media
+- The recipes featured on this website are sourced from [AllRecipes](https://www.allrecipes.com/cuisine-a-z-6740455)
+- The background image is from [Pexels](https://www.pexels.com) and the recipe images are from [AllRecipes](https://www.allrecipes.com/cuisine-a-z-6740455)
+- **Sources of inspiration and guidance in general**:
+    - The Django Recipe Sharing Tutorial series by Dee Mc - [Django Recipe Sharing Tutorial series](https://www.youtube.com/@IonaFrisbee).
+    - [Django Tutorial](https://youtu.be/n-FTlQ7Djqc?si=Hfm94TiD4vbWolwj) by Net Ninja - A helpful tutorial on Django development.
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>* 
+
+### Content
+
+- **Documentation and Resources**:
+    - [Cloudinary](https://cloudinary.com/users/register_free) - A cloud service for storing, managing, and delivering images.
+    - [AllAuth Documentation](https://docs.allauth.org/en/latest/installation/quickstart.html) - Documentation for integrating AllAuth for authentication.
+    - [Django Field Types](https://docs.djangoproject.com/en/4.2/ref/models/fields/#model-field-types) - Documentation on different field types available in Django models.
+    - [Django Field Options](https://docs.djangoproject.com/en/4.2/ref/models/fields/#field-options) - Documentation on options available for Django model fields.
+    - [PositiveIntegerField – Django Models](https://www.geeksforgeeks.org/positiveintegerfield-django-models/) - Guide on using 'PositiveIntegerField' in Django models.
+    - [SummernoteWidget Documentation](https://github.com/summernote/django-summernote) - Documentation for using the Summernote WYSIWYG editor with Django.
+    - [Django Mixins](https://docs.djangoproject.com/en/4.1/topics/class-based-views/mixins/) - Documentation on using mixins in Django class-based views.
+    - [Django Messages Framework](https://docs.djangoproject.com/en/5.0/ref/contrib/messages/) - Official documentation for Django’s messaging framework.
+
+- **Stackoverflow**
+    - [Always define standard rule '@keyframes' when defining keyframes](https://stackoverflow.com/questions/68360838/i-am-getting-error-about-webkit-keyframes-in-css-section-in-my-project) - Guidance on using the '@keyframes' rule properly for compatibility.
+    - [Also define the standard property 'animation' for compatibility](https://stackoverflow.com/questions/55586658/fix-warning-also-define-the-standard-property-box-shadow-for-compatibility) - Advice on defining the standard 'animation' property to ensure compatibility across different browsers.
+    - [Django: Display message after creating a post](https://stackoverflow.com/questions/67366138/django-display-message-after-creating-a-post) - Solution for displaying a message in Django after creating a post.
+    - [Trigger a 500 error](https://stackoverflow.com/questions/24660406/how-can-i-trigger-a-500-error-in-django) - How to manually trigger a 500 error in Django for testing purposes.
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
+### Acknowledgements
+I would like to thank! 
+- I am grateful to the Code Institute's Tutor support for solving all my doubts.
+- I appreciate my mentor, Jubril Akolade, for his guidance.
+- I'm also grateful to my family and friends for testing the app and giving valuable feedback.
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
