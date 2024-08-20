@@ -435,6 +435,11 @@ The New Flavor page allows users to submit a new flavor to the application. The 
   - Users can upload an image for the flavor, but it's not required.
   - If no image is provided, a default image will be used.
 
+- Form Validation:
+  - The form checks that all required fields are completed.
+  - Numeric fields (e.g., prep time, cooking time, servings) must be valid positive numbers.
+  - If there are errors, messages will appear under the fields to help users correct them.
+
 - Submission and Feedback: 
   - After submitting the form, users will see a success message.
   - They will be redirected to the page displaying all flavors.
@@ -450,6 +455,9 @@ The New Flavor page allows users to submit a new flavor to the application. The 
 
 ##### New Flavor Page View Mobile
 ![new-flavor-page-view-mobile](documentation/docs_images/new-flavor-page-view-mobile.png)
+
+##### New Flavor Page Form Validation View 
+![new-flavor-page-form-validation-view](documentation/docs_images/new-flavor-page-form-validation-view.png)
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
 
@@ -469,6 +477,11 @@ The Edit Flavor page allows logged-in users to update their previously shared re
 - Image Upload:
     - Users can update the image, but it's not required.
 
+- Form Validation:
+  - The form checks that all required fields are completed.
+  - Numeric fields (e.g., prep time, cooking time, servings) must be valid positive numbers.
+  - If there are errors, messages will appear under the fields to help users correct them.
+
 - Submission and Feedback:
     - After clicking "Update Flavor", a confirmation message appears, and the user is redirected to the recipes page.
 
@@ -484,6 +497,9 @@ This page makes it simple for users to keep their recipes up to date.
 
 ##### Edit Flavor Page View
 ![edit-flavor-page-view](documentation/docs_images/edit-flavor-page-view.png)
+
+##### Edit Flavor Page Form Validation View 
+![edit-flavor-page-form-validation-view](documentation/docs_images/edit-flavor-page-form-validation-view.png)
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*  
 
