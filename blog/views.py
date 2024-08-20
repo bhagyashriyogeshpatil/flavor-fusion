@@ -358,5 +358,5 @@ def comment_delete_view(request, slug, comment_id):
     return redirect('recipe_detail', slug=slug)
 
 # To test the 500 Internal Server Error page
-# def trigger_500_error(request):
-#     raise Exception("This is a simulated 500 error.")
+def trigger_500_error(request):
+    raise Exception("This is a simulated 500 error.")
