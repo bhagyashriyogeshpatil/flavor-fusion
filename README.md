@@ -5,7 +5,7 @@ The application provides several key features, including user authentication, fu
 
 Flavor Fusion is built using modern web technologies, including HTML, CSS, and Python with the Django framework. The project was developed as a Portfolio Project for the Code Institute's Full Stack Software Development Course, showcasing the integration of front-end and back-end technologies to create a dynamic and user-friendly web application.
 
-![flavor-fusion-mockup-image]()
+![flavor-fusion-mockup-image](documentation/docs_images/flavor-fusion-mockup-image.png)
 
 
 Deployed website:
@@ -42,6 +42,14 @@ Deployed website:
     - [Scope](#scope)
     - [Structure](#structure)
     - [Skeleton](#skeleton)
+- [Frontend Design](#frontend-design)
+    - [Wireframes](#wireframes)
+    - [Color Scheme](#color-scheme)
+    - [Typography](#typography)
+    - [Imagery](#imagery)
+    - [Accessibility Features](#accessibility-features)
+    - [Responsiveness](#responsiveness)   
+- [Testing](#testing)
 - [Deployment](#deployment)
     - <a href="#prerequisites">Prerequisites</a>
     - <a href="#heroku-deployment">Heroku Deployment</a>
@@ -49,7 +57,6 @@ Deployed website:
         - [How to Fork](#how-to-fork)
         - [How to clone](#how-to-clone)
         - [Setting up your local environment](#setting-up-your-local-environment)
-- [Testing](#testing)
 - [Technologies Used](#technologies-used)
     - [Programming Languages](#programming-languages)
     - [Frameworks and Libraries](#frameworks-and-libraries)
@@ -876,6 +883,98 @@ The project's framework is outlined using wireframes and Entity-Relationship Dia
 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>* 
 
+## Frontend Design
+
+<details id="wireframes">
+<summary style="font-size: 1.2em; font-weight: bold;">Wireframes</summary>
+
+The wireframes for Flavor Fusion were created using [Balsamiq](https://balsamiq.com/) to plan the basic layout and interface for the main pages. These wireframes helped guide the development of a responsive and accessible web interface with a mobile-first approach. Although the final design may differ from the wireframes due to changes during development, they provided a helpful starting point.
+
+#### Home Page for not Logged-in User
+![home-page-for-not-logged-in-user](documentation/docs_images/wireframes/home-page-for-not-logged-in-user.png)
+
+#### Home Page for Authorized User
+![home-page-for-authorized-users](documentation/docs_images/wireframes/home-page-for-authorized-users.png)
+
+#### Browse Recipes Page
+![browse-recipes-page](documentation/docs_images/wireframes/browse-recipes-page.png)
+
+#### Recipe Details Page Unauthorised Users
+![recipe-details-page-unauthorised-users](documentation/docs_images/wireframes/recipe-details-page-unauthorised-users.png)
+
+#### Recipe Details Page Authorised Users
+![recipe-details-page-authorised-users](documentation/docs_images/wireframes/recipe-details-page-authorised-users.png)
+
+#### New Flavor Page
+![new-flavor-page](documentation/docs_images/wireframes/new-flavor-page.png)
+
+#### Edit Flavor Page
+![edit-flavor-page](documentation/docs_images/wireframes/edit-flavor-page.png)
+
+#### Confirm Deletion Page
+![confirm-deletion-page](documentation/docs_images/wireframes/confirm-deletion-page.png)
+
+#### Explore Flavor Feature
+![explore-flavor-feature](documentation/docs_images/wireframes/explore-flavor-feature.png)
+
+#### Sign Up Page
+![sign-up-page](documentation/docs_images/wireframes/sign-up-page.png)
+
+#### Log In Page
+![login-page](documentation/docs_images/wireframes/login-page.png)
+
+#### Log out Page
+![logout-page](documentation/docs_images/wireframes/logout-page.png)
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
+</details>
+
+### Color Scheme
+The color scheme uses a natural palette to match the food and recipe theme of the site. The color scheme was created using [Coolors](https://coolors.co/).
+
+The site features a light cream background color (#F7F7F7) and uses dark green (#071B01) for primary text. Accent colors include yellow (#E6AB3F), harvest gold (#D69723), goldenrod (#D59C2C), and red (#7D1414). Supporting colors are olive green (#575C0E), slate gray (#6C7A89), black (#010201), and white (#FFFFFF). These colors work together to create a warm and inviting design.
+
+![Color palette](documentation/docs_images/flavor-fusion-color-palette.png)
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*
+
+### Typography
+The project uses two primary fonts:
+
+**Lato:** A clean and modern sans-serif font used for the main body text, navigation links, and buttons. It ensures readability and clarity across different devices.
+
+**Playfair Display SC:** A serif font is used for headings and titles, giving the headers a more elegant and distinct look.
+
+These fonts are imported from [Google Fonts](https://fonts.google.com/) to ensure a consistent typographic style throughout the site.
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*
+
+### Imagery
+
+The background image is from [Pexels](https://www.pexels.com) and the recipe images are from [AllRecipes](https://www.allrecipes.com/cuisine-a-z-6740455). These images were carefully chosen to align with the website's purpose, providing users with visual representation for the recipe content and enhancing the overall design impact.
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*
+
+
+### Accessibility Features
+
+Accessibility is improved using semantic HTML, carefully chosen colors, and responsive design, ensuring the website is usable by a wide range of people, including those with disabilities.
+
+The site meets Web Content Accessibility Guidelines (WCAG) standards, with no errors detected by the WAVE accessibility tool. Only minor alerts are present.
+
+![wave-view](documentation/docs_images/wave-view.png)
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
+### Responsiveness
+
+The website's design is responsive, tested across multiple devices to ensure a consistent and user-friendly experience regardless of device size.
+
+![responsiveness-multiple-devices](documentation/docs_images/flavor-fusion-mockup-image.png)
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+
 ## Testing
 
 This section explains how to test the application and documents any bugs found during development, along with their fixes. It helps keep track of the application's quality and improvements.
@@ -1057,11 +1156,12 @@ Important points for before deployment:
     If the requirements.txt file doesn't exist, you can create it by running: ```pip3 freeze > requirements.txt``` 
 4. Run the project:
 After setting up the environment variables and installing dependencies, you can run the Django project locally using the following command:
-```python manage.py runserver```
-
-*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
+```python manage.py runserver```  
 
 </details>
+
+
+*<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
 
 ## Technologies Used
 
@@ -1144,7 +1244,7 @@ After setting up the environment variables and installing dependencies, you can 
 ## Credits and Acknowledgements
 
 ### Code
-- [CodePen Navigation Hover Effects](https://codepen.io/maheshambure21/pen/QwXaRw) -  Used this example of beautiful navigation hover effects.
+- [CodePen Navigation Hover Effects](https://codepen.io/maheshambure21/pen/QwXaRw) - Used this example of beautiful navigation hover effects.
 
 ### Media
 - The recipes featured on this website are sourced from [AllRecipes](https://www.allrecipes.com/cuisine-a-z-6740455)
@@ -1176,7 +1276,7 @@ After setting up the environment variables and installing dependencies, you can 
 *<span style="color: blue;">[Back to Content](#table-of-contents)</span>*   
 
 ### Acknowledgements
-I would like to thank! 
+- The Code Institute's "I Think Therefore I Blog" walkthrough project was referred to throughout the development process.
 - I am grateful to the Code Institute's Tutor support for solving all my doubts.
 - I appreciate my mentor, Jubril Akolade, for his guidance.
 - I'm also grateful to my family and friends for testing the app and giving valuable feedback.
