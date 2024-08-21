@@ -12,9 +12,6 @@ from django.contrib import messages
 from .models import Recipe, Comment
 from .forms import NewFlavorsForm, CommentForm
 
-# To test the 500 Internal Server Error page
-# from django.http import HttpResponseServerError
-
 # Create your views here.
 
 
